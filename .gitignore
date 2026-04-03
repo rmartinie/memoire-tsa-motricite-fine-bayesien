@@ -13,4 +13,4 @@ Latex/*.lot
 *~
 *.swp
 .DS_Store
-
+.Rhistory
