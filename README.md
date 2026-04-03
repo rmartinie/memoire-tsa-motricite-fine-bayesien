@@ -7,7 +7,7 @@ Et ils offrent leur travail au journal, parfois même en payant pour publier !
 
 Ce modèle ne fait pas que coûter cher, il oriente aussi la recherche.
 Alors oui, la science est située socialement, et c'est normal car les chercheurs le sont aussi.
-Pour autant, est-ce nécessaire que des organismes à but lucratif et des états fascistes aient une influence considérable ?
+Pour autant, est-ce nécessaire que des organismes à but lucratif et des [états fascistes](https://pen.org/banned-words-list/) aient une influence considérable ?
 
 Je pense que ce contexte participe largement à produire de la [*fast science*](https://journals.openedition.org/socio/14142), [difficile à répliquer](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124),
 aidée par une approche NHST et une [quête de la p-value significative](https://www.semanticscholar.org/paper/Scientists-rise-up-against-statistical-significance-Amrhein-Greenland/bd933600365e9fe235425e932ac9c76652b59ab3) qui conduit à du p-hacking et une inflation des erreurs de type I.
