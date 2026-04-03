@@ -9,7 +9,7 @@ Latex/*.run.xml
 Latex/*.synctex.gz
 Latex/*.lof
 Latex/*.lot
-
+*.html
 *~
 *.swp
 .DS_Store
