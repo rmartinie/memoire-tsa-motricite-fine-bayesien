@@ -1,0 +1,234 @@
+
+\chapter{Matériel et méthodes}
+
+Les données analysées dans ce mémoire sont issues des travaux de la thèse de \textcite{benchekri_mieux_2024}, dont nous rappelons 
+ici les éléments de protocole nécessaires à la compréhension 
+de la démarche statistique.
+
+
+\section{Protocole expérimental}
+
+\subsection{Population}
+L'étude a inclus des enfants âgés de 6 à 12 ans, répartis en deux groupes : des enfants avec un trouble du spectre de l'autisme (TSA) et des enfants à développement "typique" (TD). Pour les enfants TSA, le diagnostic a été validé cliniquement par les équipes médicales des structures partenaires où ils étaient suivis, et objectivé par un score seuil à l'ADI-R et/ou à l'ADOS.
+
+\subsection{Dispositif et tâches motrices}
+
+Le protocole comprenait des tâches organisées de la façon suivante : motricité fine, motricité globale, puis oculométrie. Parmi l'ensemble des tâches proposées, quatre étaient en lien avec la motricité fine et ont donc donné lieu aux variables analysées dans ce mémoire. Les données motrices ont été recueillies à l'aide d'une tablette graphique et d'un stylet (voir Annexe pour + de détails), sur quatre sites : Bordeaux, La Rochelle, Limoges, Poitiers.
+
+
+\subsubsection{Anticipation pointage}
+
+La tâche d'anticipation pointage (PA) consistait à pointer successivement deux cibles avec le stylet, en partant d'un carré de 0,5~cm de côté. La première cible, d'un diamètre de 2~cm, était présentée horizontalement à 10~cm de la zone de départ, à gauche ou à droite. La seconde cible était placée au-dessus de la première, à 14~cm de celle-ci, et pouvait présenter deux diamètres : 2~cm ou 0,5~cm, correspondant respectivement aux conditions facile et difficile (voir figure~\ref{fig:PA}).
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=1.4]{PA.pdf}
+	\caption[Configuration expérimentale pour la réalisation de la tâche d'Anticipation Pointage]{Configuration expérimentale pour la réalisation de la tâche d'Anticipation Pointage. La première cible pouvait apparaître à droite ou à gauche. La seconde cible est ici représentée en condition difficile (cible petite). N'est pas à l'échelle.}
+	\label{fig:PA}
+\end{figure}
+
+\subsubsection{Anticipation écriture}
+
+La tâche d'anticipation écriture (ll\_ln) consistait à recopier avec le stylet et par-dessus un modèle, deux digrammes (\textit{ll} et \textit{ln}) présentés en écriture cursive, sans espace entre les deux lettres (voir figure~\ref{fig:ll_ln}).
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.8]{ll_ln.pdf}
+	\caption{Représentation des visuels utilisés pour la réalisation de la tâche d'Anticipation Ecriture}
+	\label{fig:ll_ln}
+\end{figure}
+
+\subsubsection{Isochronie}
+
+Pour la tâche d'isochronie (Epow), le participant devait recopier, avec le stylet et par-dessus un modèle, la lettre \textit{e} selon cinq tailles différentes. Pour chaque taille, cinq essais consécutifs étaient réalisés avant de passer à la taille suivante (voir figure~\ref{fig:epow}).
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.8]{epow.pdf}
+	\caption[Représentation des visuels utilisés pour la réalisation de la tâche d'isochronie]{Représentation des visuels utilisés pour la réalisation de la tâche d'isochronie. Pour chaque taille, 5 essais étaient réalisés. N'est pas à l'échelle.}
+	\label{fig:epow}
+\end{figure}
+
+\subsubsection{Pointage simple}
+
+La tâche de Pointage simple (PS\_lin) correspondait à une tâche de Fitts. Le participant devait pointer une cible avec le stylet dès son apparition, le plus rapidement possible et sans lever le stylet, en partant d'un carré de 0,5~cm de côté. Quatre niveaux de difficulté ont été définis par l'indice de difficulté ID, calculé selon la formule suivante :
+
+\[
+\text{ID} = \log_2\!\left(\frac{2A}{w}\right)
+\]
+
+où $A$ désigne la distance à parcourir et $w$ la largeur de la 
+cible. Les paramètres associés à chaque niveau de difficulté 
+sont présentés dans le tableau~\ref{table:IDfitts}.
+
+
+\begin{table}[ht]
+	\centering
+	\begin{tabularx}{0.65\textwidth}{X X X}
+		\hline \textbf{ID} & \textbf{Distance $A$ (cm)} & \textbf{Taille $w$ (cm)} \\ \hline
+		3 & 8 & 2 \\
+		4 & 16 & 2 \\
+		5 & 8 & 0,5 \\
+		6 & 16 & 0,5 \\ \hline
+	\end{tabularx}
+	\caption{Paramètres utilisés lors de la tâche de Fitts}
+	\label{table:IDfitts}
+\end{table}
+
+
+\section{Description du jeu de données}
+
+Les données ont été collectées sur quatre sites cliniques à l'aide d'un système de capture de mouvement Vicon (+ ref). Au total, 66 enfants TSA et 62 enfants TD ont été rencontrés. Après traitement des données, le jeu de données final retenu pour les analyses comprend 45 enfants TSA et 49 enfants TD.
+
+À partir des enregistrements issus des quatre tâches, 142 variables motrices ont été extraites, auxquelles s'ajoutent l'âge et le sexe de chaque enfant, soit 144 variables prédictives (\textit{features}) au total. Ces variables se répartissent en trois catégories : des variables directes? (distances, vitesses...), des variables dérivées (SPARC, curve index...) et des variables spécifiques aux tâches (indice d'isochronie, pente de la loi de Fitts...). Une description complète de l'ensemble des variables est disponible en annexe ANNEXE.
+
+Le ratio variables/observations ($D/n = 144/94 \approx 1.5$) est supérieur à~1. L'analyse statistique est donc dans un cas de grande dimension + citation fléau de la dimensionnalité ?. Ce constat motive le recours à un cadre régularisant pour déterminer les variables les plus caractéristiques.
+
+
+
+\section{Cadre de l'inférence bayésienne}
+L'inférence bayésienne repose sur le théorème de Bayes, qui exprime la distribution \textit{a posteriori} des paramètres $\theta$ du modèle conditionnellement aux données observées $y$ :
+\[
+p(\theta \mid y) \propto p(y \mid \theta)\, p(\theta)
+\]
+
+
+où $p(y \mid \theta)$ désigne la vraisemblance des données et $p(\theta)$ la distribution \textit{a priori} sur les paramètres. Contrairement à l'approche fréquentiste (cadre "classique"), les paramètres ne sont pas estimés ponctuellement mais caractérisés par une distribution de probabilité, qui quantifie explicitement l'incertitude sur leurs valeurs. L'inférence porte ainsi sur $p(\theta \mid y)$ et non sur la probabilité des données sous l'hypothèse nulle. Il est important de noter que les probabilités sont ici considérées de façon \textit{épistémique} : elles modélisent l'incertitude des paramètres et non leur fréquence.
+
+Les approches fondées sur les tests d'hypothèse nulle (NHST) et le seuil de significativité $p < 0.05$ font l'objet de critiques méthodologiques majeures \parencite{Amrhein2019Mar, Ioannidis2005Aug}. Elles encouragent notamment le raisonnement binaire, entrainent une inflation des erreurs de type I et ne permettent pas de quantifier l'incertitude sur les paramètres d'intérêt. Dans le contexte de ce mémoire où $p > n$, on s'attend à une grande incertitude sur les paramètres et à un risque important d'erreurs de type I dans un cadre fréquentiste. 
+
+Ainsi, une méthodologie bayésienne lève ces limitations en fournissant une distribution de probabilité complète par paramètre, en s'affranchissant du problème des comparaisons multiples \parencite{Gelman2009Jul} %(à lire)
+ et en intégrant la régularisation via les distributions \textit{a priori} (voir section~\ref{sec:prior}). 
+
+En pratique, la distribution \textit{a posteriori} n'est pas calculable analytiquement dans le cas général. Elle est approchée par simulation via des méthodes de Monte Carlo par chaînes de Markov (MCMC), qui permettent d'approximer la distribution de $p(\theta \mid y)$ en obtenant des échantillons de celle-ci. Une limite importante de la méthodologie appliquée est donc le coût computationnel qui est supérieur aux approches fréquentistes classiques, bien que les implémentations actuelles rendent ce coût élevé mais acceptable pour les dimensions considérées ici.
+
+
+ 
+ \section{Cadre interprétatif de la sélection}
+ La sélection de variables est réalisée selon un critère prédictif (voir section~\ref{sec:critere}) : une variable est considérée comme informative si sa présence dans le modèle améliore la capacité à prédire l'appartenance au groupe TSA ou TD sur de nouvelles observations. Nous considèrerons que si une variable est prédictive, alors elle reflète une caractéristique motrice différenciant les deux groupes sans que cela constitue une preuve de causalité. Ainsi, si un sous-ensemble de variables prédit aussi bien que le modèle complet, les variables exclues sont soit du bruit, soit redondantes, c'est-à-dire qu'elles partagent une information mutuelle 
+ élevée \footnote{
+ 	Au sens de la théorie de l'information, l'information mutuelle entre deux variables aléatoires 
+ 	$X$ et $Y$ est définie par :
+ 	\[
+ 	I(X\,;Y) = H(X) + H(Y) - H(X,Y)
+ 	\]
+ 	où $H$ désigne l'entropie de Shannon. Elle mesure la quantité d'information partagée entre $X$ et $Y$, et vaut zéro si et seulement si $X$ et $Y$ sont indépendantes.
+ } avec les variables déjà sélectionnées sans pour autant être du bruit. La redondance n'est pas limitée aux relations linéaires d'ordre~1 (corrélation) : des dépendances non-linéaires entre variables peuvent également conduire à l'exclusion d'une variable par ailleurs pertinente.
+ 
+ Ces considérations impliquent que la liste des variables sélectionnées constitue un point de départ pour l'exploration clinique et expérimentale et non un ensemble exhaustif ou définitif de marqueurs du TSA. 
+
+\section{Prétraitement des données}
+
+Trois sujets présentant des valeurs manquantes ont été exclus de l'analyse. Un sujet supplémentaire a été exclu sur la base d'un critère de valeur aberrante : toute observation présentant un score $|z| > 5$ sur au moins une variable était candidate à l'exclusion. L'exclusion a été confirmée après vérification en unités naturelles et examen du contexte de la tâche. Au total, 90 sujets ont donc été retenus pour l'analyse.
+
+L'ensemble des variables a ensuite été centré et réduit (moyenne et écart-type estimés sur l'échantillon), de façon à les ramener à une échelle commune. Cette normalisation repose sur des estimateurs fréquentistes, ce qui constitue une légère entorse à la cohérence bayésienne stricte mais était néanmoins nécessaire pour l'application de distributions a priori régularisantes comparables entre coefficients (voir section~\ref{sec:prior}).
+
+\section{Modèle de référence}
+\subsection{Régression logistique bayésienne}
+
+Le modèle de référence est une régression logistique bayésienne. La variable à prédire $y_i \in \{0, 1\}$ indique l'appartenance de l'individu $i$ au groupe TSA ($y_i = 1$) ou TD ($y_i = 0$). Le modèle est défini tel que : 
+
+\begin{align*}
+	y_i &\sim \text{Bernoulli}(\pi_i), \quad i = 1, \dots, n \\
+	\text{logit}(\pi_i) &= \alpha + \sum_{j=1}^{D} \beta_j x_{ij}, 
+	\quad j = 1, \dots, D
+	\label{eq:vraisemblance}
+\end{align*}
+
+où $\pi_i = P(y_i = 1 \mid x_i)$ est la probabilité d'appartenir au groupe TSA, $\alpha$ l'ordonnée à l'origine, $\beta_j$ le coefficient associé à la variable $x_{ij}$, et $D$ le nombre total de variables. La fonction logit, définie par $\text{logit}(\pi) = \log(\pi / (1-\pi))$, assure que $\pi_i \in ]0,1[$. Géométriquement, le modèle définit un hyperplan qui sépare les groupes TD et TSA dans l'espace des \textit{features} dont la distance signée détermine la probabilité d'appartenance à chaque groupe.
+
+\subsection{Spécification des priors}\label{sec:prior}
+
+Dans le cadre bayésien, les distributions a priori peuvent jouer un rôle analogue à la régularisation en statistique fréquentiste : elles contraignent les coefficients vers zéro en l'absence de signal suffisant dans les données. Un prior gaussien centré correspond à une pénalité ridge ($L_2$) tandis qu'un prior laplacien correspond à une pénalité lasso ($L_1$). Ces deux approches présentent cependant des limitations dans le régime $p > n$ : le prior gaussien écrase uniformément tous les coefficients sans produire de sparsité (coefficient à 0), tandis que le prior laplacien tend à trop contraindre les effets importants.
+
+Le prior \textit{Regularized Horseshoe} (RHS) \parencite{Piironen2017Jul} est proposé pour dépasser ces limites dans un cadre bayésien, pour les problèmes de sélection de variables en grande dimension. Il repose sur une décomposition en deux niveaux de régularisation :
+\begin{align*}
+	\beta_j &\sim \mathcal{N}(0,\, \tau^2 \tilde{\lambda}_j^2) \\
+	\tilde{\lambda}_j^2 &= \frac{c^2 \lambda_j^2}{c^2 + \tau^2 \lambda_j^2} \\
+	\lambda_j &\sim \mathrm{C}^+(0, 1), \qquad 
+	\tau \sim \mathrm{C}^+(0, \tau_0) \\
+	c^2 &\sim \mathrm{Inv\text{-}Gamma}\!\left(\frac{\nu}{2},\, 
+	\frac{\nu s^2}{2}\right)
+\end{align*}
+
+où $\mathrm{C}^+$ désigne la distribution demi-Cauchy. Le paramètre $\tau$ joue le rôle de \textit{shrinkage global} : il pousse l'ensemble des coefficients vers zéro. Le paramètre $\lambda_j$ joue le rôle de \textit{shrinkage local} : il permet aux coefficients présentant un signal suffisant d'échapper à cet écrasement. Le terme $c^2$, issu d'une distribution Inverse-Gamma de paramètres $(\nu/2, \nu s^2/2)$ avec $\nu = 4$ et $s = 2$ (valeurs recommandées par \cite{Piironen2017Jul}), régularise les coefficients importants en bornant leur variance \textit{a priori}.
+
+L'hyperparamètre $\tau_0$, qui calibre le shrinkage global en fonction de la sparsité attendue, est défini par :
+
+\[
+\tau_0 = \frac{p_0}{D - p_0}\,\frac{\sigma}{\sqrt{n}}
+\]
+
+où $p_0$ est le nombre de variables a priori supposées prédictives, $D$ le nombre total de variables, $n$ la taille d'échantillon, et $\sigma$ une facteur d'échelle dans le cadre de la régression logistique. Conformément aux recommandations de \textcite{Piironen2017Jul} pour la régression logistique, $\sigma$ est fixé à 2. Nous posons $p_0 = 10$, reflétant l'hypothèse que seul un petit nombre de variables parmi les $D = 144$ est suffisant pour discriminer les deux groupes. Ce choix est exploratoire et sa sensibilité est évaluée dans la section~\ref{sec:sensi}.
+
+L'intercept $\alpha$ reçoit un prior Student-t peu informatif, centré en zéro :
+
+\[
+\alpha \sim \mathrm{Student\text{-}t}(\nu=7,\, \mu=0,\, \sigma=2.5)
+\]
+
+
+
+\subsection{Critères de validité du modèle}\label{sec:validite}
+
+La performance prédictive du modèle est évaluée par validation croisée \textit{leave-one-out} (LOO-CV), approchée par l'estimateur PSIS-LOO \parencite{Vehtari2015Jul}. Il estime l'\textit{expected log pointwise predictive density} (elpd), définie telle que :
+% pas besoin d'aller dans les détail de l'estimateur PSIS imo, trop technique pour rien
+\[
+\text{elpd}_{\text{loo}} = \sum_{i=1}^{n} 
+\log p(y_i \mid y_{-i})
+\]
+
+où $p(y_i \mid y_{-i})$ désigne la probabilité assignée par le modèle ajusté sur les $n-1$ observations restantes à la vraie classe de l'observation $i$. L'elpd est donc la somme des log-probabilités prédites pour chaque observation mise de côté tour à tour : plus elle est élevée, meilleure est la capacité du modèle à généraliser à de nouvelles données. L'elpd constitue le critère principal de comparaison entre modèles.
+
+La fiabilité de l'approximation PSIS-LOO est contrôlée par les diagnostics $\hat{k}$ de Pareto : pour chaque observation $i$, un $\hat{k} > 0.7$ signale que l'approximation est peu fiable pour cette observation et que l'estimation de l'elpd doit être interprétée avec précaution \parencite{Vehtari2015Jul}.
+
+La précision de classification (\textit{accuracy}, \texttt{pctcorr} dans \texttt{projpred}) %SACHANT QUE J'AI PAS ENCORE PARLÉ DE PROJPRED A VOIR)
+ est rapportée comme critère complémentaire pour faciliter l'interprétation clinique des résultats. Elle est définie comme la proportion d'observations correctement classées, la classe prédite étant celle de probabilité maximale selon le modèle \parencite{projpred}.
+
+
+\subsection{Diagnostics MCMC}
+ Il est nécessaire de vérifier la convergence des chaînes avant toute inférence. Quatre chaînes de  de chacune 4000 itérations ont été simulées, dont 2000 de préchauffage (\textit{warmup}), soit 8000 échantillons post-warmup au total. %Le paramètre \texttt{adapt\_delta} a été fixé à 0.95 (valeur par défaut : 0.8) afin de prévenir l'apparition de transitions divergentes (indicateur de difficultés d'exploration de la distribution \textit{a posteriori}). 
+ La convergence est évaluée par le critère $\hat{R}$ de Gelman-Rubin. Une valeur $\hat{R}$ < 1.01 et une taille d'échantillon effective > 400 pour l'ensemble des paramètres sont retenues comme seuil de convergence \parencite{Vehtari2019Mar}. Ces diagnostics sont complétés par un examen visuel des traceplots, des graphiques d'autocorrélation et des distributions marginales \textit{a posteriori} (histogrammes et densités). %Compte tenu du nombre de paramètres, la checklist WAMBS complète n'est pas appliquée intégralement \parencite{Depaoli2017Jun} (exemple de diagnostics disponible en Annexe XXX).
+ 
+\subsection{Vérifications prédictives (\textit{Predictive Checks)}}
+
+Enfin, la validité du modèle a été évaluée par des vérifications prédictives (\textit{Predictive Checks}). Un \textit{Prior Predictive Check} a d'abord permis de s'assurer que les distributions \textit{a priori} ne contraignaient pas le modèle vers des prédictions extrêmes avant l'observation des données. Après ajustement, un \textit{Posterior Predictive Check} a été réalisé en comparant la distribution des données observées aux données simulées par le modèle. Le \textit{Posterior Predictive Check} montre que le modèle reproduit la proportion des classes (TSA/TD) sans pour autant présenter une certitude extrême et évite ainsi le surapprentissage. Les graphiques sont présentés en Annexe XXX. 
+
+
+\section{Sélection par projection prédictive}
+\subsection{Principe de cv varsel}
+La sélection par projection prédictive \parencite{Piironen2018Oct} est une méthode de sélection de variables en fonction d'un modèle de référence, ici le modèle logistique bayésien complet ajusté sur l'ensemble des variables. Ce modèle constitue un plafond de performance prédictive : l'objectif est d'identifier le sous-modèle le plus parcimonieux dont la performance prédictive n'est pas inférieure à celle du modèle de référence (voir section~\ref{sec:critere} pour le critère de sélection).
+
+Le modèle de référence est d'abord ajusté sur l'ensemble des données et sa distribution \textit{a posteriori} est obtenue par MCMC. Une recherche forward est ensuite conduite : les variables sont ajoutées une à une au sous-modèle, en sélectionnant à chaque étape la variable qui minimise la divergence de Kullback-Leibler\footnote{
+	La divergence de Kullback-Leibler, notée $D_{\text{KL}}$, est souvent décrite comme une mesure de la distance entre deux distributions de probabilité. Formellement, avec $P$ et $Q$ des densités de probabilité :
+	\[
+	D_{\text{KL}}(P \| Q) = \int p(x)\,\log\frac{p(x)}{q(x)}\,\mathrm{d}x	\]
+}  entre les prédictions du sous-modèle projeté et celles du modèle de référence. La projection consiste à trouver, pour chaque taille de sous-modèle, les paramètres qui reproduisent au mieux le comportement prédictif du modèle de référence. Une fois le sous-modèle sélectionné, une inférence finale est conduite sur ce sous-modèle restreint.
+
+La performance prédictive de chaque sous-modèle est évaluée par \texttt{cv\_varsel} avec \texttt{validate\_search = TRUE} \parencite{projpred}. Une LOO-CV est réalisée dans laquelle, à chaque fold, la recherche forward est réappliquée sur les $n-1$ observations d'entraînement. La performance à chaque étape (chaque \textit{fold} de LOO-CV pour chaque taille de sous-modèle $k$ testée) est définie par l'elpd approximé par PSIS-LOO. La performance finale du sous-modèle sélectionné est évaluée sur l'observation exclue. % Cela permet de corriger le biais de sélection lié à la recherche forward.
+La fréquence à laquelle une variable est incluse dans le sous-modèle de taille $k$ à travers les folds permet de constituer une mesure de stabilité de la sélection.
+
+\subsection{Critère de sélection}\label{sec:critere}
+
+Le critère principal de sélection est l'elpd estimé par PSIS-LOO (voir section~\ref{sec:validite}). Pour chaque taille de sous-modèle $k$, l'écart à la performance du modèle de référence est quantifié par la différence $\Delta \text{elpd}_k=\text{elpd}_k - \text{elpd}_{ref}$ négative ou nulle par construction. La taille du sous-modèle retenu est déterminée principalement par la règle des $1\,\widehat{SE}$ (erreur standard)  \parencite{Piironen2018Oct} : le sous-modèle le plus parcimonieux tel que $|\Delta\text{elpd}_k| \leq \widehat{SE}(\Delta\text{elpd}_k)$, c'est-à-dire dont l'écart au modèle de référence reste inférieur à son erreur standard estimée. Ce critère est confirmé visuellement par le critère du coude sur la courbe $\Delta \text{elpd}_k$ et par la stabilité de sélection des variables. La précision est également rapportée mais la sélection de modèle est décidée par l'application des critères sur l'elpd.
+
+
+\section{Screening par comparaison de modèles et sélection sur la tâche PA}
+L'application de la sélection par projection prédictive sur le modèle global (144 variables) se heurte à une incertitude élevée sur l'estimation de l'elpd liée au ratio $D/n$ important. En l'absence de coude net dans la courbe $\Delta\text{elpd}_k$, il n'est pas possible d'identifier un sous-ensemble de variables de manière fiable à partir du modèle complet (voir section~\ref{sec:sel_global}).
+
+Pour contourner cette limite, le modèle global est décomposé en quatre sous-modèles de référence, un par tâche motrice (PA, ll\_ln, Epow, PS\_lin). Chaque sous-modèle est ajusté indépendamment avec le même prior RHS et la même procédure MCMC que le modèle global, à l'exception de $p_0 = 5$, ce qui reflète le moindre nombre de variables ($\tau_0$ recalculé en fonction, voir section~\ref{sec:prior}). La performance prédictive de chaque sous-modèle est estimée par PSIS-LOO et les $\hat{k}$ de Pareto sont rapportés pour chaque modèle. La comparaison des elpd entre sous-modèles et avec le modèle global est conduite par \texttt{loo\_compare} \parencite{loo} ; ces modèles n'étant pas nichés, cette comparaison est indicative et non un test formel.
+
+La tâche PA présente un elpd dont l'écart au modèle global reste inférieur à $1\,\widehat{SE}$ (voir section~\ref{sec:sel_PA}), ce qui satisfait le critère de sélection défini en section~\ref{sec:critere}. Elle est donc retenue comme tâche candidate pour la sélection par projection prédictive, son sous-modèle constituant le nouveau modèle de référence ($D_\text{PA} = 24$). 
+
+
+\section{Analyse de sensibilité}\label{sec:sensi}
+La sensibilité des résultats au choix de $p_0$ a été évaluée en réajustant le modèle de référence complet ($D=144$) avec trois valeurs : $p_0 \in \{5, 10, 20\}$, et le modèle de référence PA ($D=24$) avec $p_0 \in \{3, 5, 10\}$. Pour chaque valeur, $\tau_0$ est recalculé en conséquence (voir section~\ref{sec:prior}) et la procédure \texttt{cv\_varsel} est réappliquée. La stabilité des variables sélectionnées, de la taille du sous-modèle retenu et des coefficients des variables sont examinées pour chacun des scénarios.
+% + idem refaire une sensibilité avec p0 = 2 5 ou 10 sur PA ?
+
+
+\section{Environnement logiciel}
+Les analyses ont été conduites sous R version 4.5.3 \parencite{R}. Le modèle bayésien a été ajusté par l'algorithme de Monte Carlo hamiltonien implémenté dans \texttt{rstanarm} (version 2.32.1) \parencite{rstanarm}. La sélection par projection prédictive a été conduite avec le package \texttt{projpred} (version 2.10.0.9000) \parencite{projpred}. La validation croisée LOO et les diagnostics $\hat{k}$ de Pareto ont été calculés avec le package \texttt{loo} (version 2.9.0.9000) \parencite{loo}. La reproductibilité des résultats est assurée par une graine aléatoire (\texttt{123}). La robustesse du modèle de référence a été confirmée en vérifiant la stabilité des résultats avec une graine alternative (\texttt{1234}).
+
+

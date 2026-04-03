@@ -1,0 +1,295 @@
+\chapter{Résultats}
+
+\section{Sélection sur le modèle global : limites de l'approche} \label{sec:sel_global}
+
+\subsection{Courbe elpd et sélection des variables}
+
+La procédure \texttt{cv\_varsel} a été appliquée sur le jeu de données complet, avec un nombre maximum de variables fixé à $n = 15$. Ce plafond a été validé en répétant la procédure avec $n = 25$, qui ne produit pas d'amélioration supplémentaire ni de l'elpd ni de l'accuracy.  % à reformuler, ici ou en méthode ?
+
+La courbe elpd (figure~\ref{fig:elpd_ref}) présente une première difficulté d'interprétation. En effet, selon le critère strict de l'erreur standard, le modèle à une seule variable est statistiquement équivalent au modèle complet, en raison d'une incertitude élevée sur les différences d'elpd. L'examen visuel de la courbe et les taux de sélection par \textit{fold} suggèrent néanmoins de retenir quatre variables, sélectionnées avec une stabilité respective de 0.99, 0.91, 0.97 et 0.93 (voir annexe XXX pour le détail par variable).
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=1]{elpd_ref.pdf}
+	\caption[Courbes elpd et accuracy issue du modèle de référence global]{Courbes de l'elpd et de l'accuracy issues du modèle de référence global, en fonction du nombre de variables incluses dans le sous-modèle, obtenue par projection predictive avec validation croisée. Chaque point représente la différence d'elpd/d'accuracy entre le sous-modèle et le modèle de référence. Les barres d'erreur indiquent l'incertitude à $\pm 1$ erreur standard. Une différence proche de zéro indique des performances prédictives équivalentes au modèle de référence global.}
+	\label{fig:elpd_ref}
+\end{figure}
+
+
+Le sous-modèle à quatre variables retenu est \texttt{L2\_large}, \texttt{Sparc\_small}, \texttt{Sparc2} et \texttt{pT2Pv6}. \texttt{L2\_large} correspond à la  distance parcourue de la première à la seconde cible lors de la tâche PA en condition "facile" (cible large). \texttt{Sparc\_small} et \texttt{Sparc2} sont des mesures de SPARC (\textit{Spectral Arc Length}, mesure de fluidité) mesurée lors de la tâche PA et Epow, respectivement. Enfin, \texttt{pT2Pv6} correspond au temps pour atteindre le pic de vitesse (\textit{time to peak}) mesuré lors de la tâche PS avec $\text{ID} = 6$. 
+
+Les estimations \textit{a posteriori} sont présentées dans le table~\ref{table:inf_full} pour les valeurs quantitatives et la figure~\ref{fig:mcmc_areas_ref} pour la distribution qualitatives des courbes de densité. Si la taille d'effet reste toujours très incertaine, la probabilité de direction est très forte pour chacune des 4 variables sélectionnées ce qui indique une faible incertitude quant au signe des effets. 
+
+
+
+Les performances prédictives du sous-modèle sont comparables à celles du modèle de référence (sous-modèle vs référence ; elpd : $-54.61$ vs $-57.52$, accuracy : 0.678 vs 0.656).  La matrice de confusion montre une classification modérée, avec 13 faux négatifs et 12 faux positifs sur 90 observations. L'accuracy globale restant inférieure au seuil de 0.70, la capacité prédictive du modèle de référence est elle-même limitée, ce qui invite à la prudence dans l'interprétation des variables sélectionnées. Par ailleurs, le modèle ne montre pas de signe de surapprentissage.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.8]{mcmc_areas_cvvs_ref.pdf}
+	\caption[Distributions \textit{a posteriori} du sous-modèle réduit à partir du modèle de référence global]{Distributions \textit{a posteriori} des coefficients de régression du sous-modèle à quatre variables à partir du modèle de référence global. Pour chaque paramètre, la barre verticale bleue indique la médiane \textit{a posteriori} et la zone bleue représente l'intervalle de crédibilité à 95\,\% (IC$_{95\%}$). Conditionnellement au modèle et	aux données, la valeur du paramètre a 95\,\% de chance de se situer dans cet intervalle.}
+	\label{fig:mcmc_areas_ref}
+\end{figure}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{lcccc}
+		\hline
+		& Médiane & $\text{IC}_{95\%}$ & $\text{P}(\beta_j < 0)$ & $\text{P}(\beta_j > 0)$ \\
+		\hline
+		Intercept      &  0.035 & $[-0.468 \,;\, 0.541]$ & 0.443 & 0.558 \\
+		L2\_large      & -0.738 & $[-1.442 \,;\, -0.018]$ & 0.978 & 0.023 \\
+		Sparc\_small   & -0.400 & $[-1.137 \,;\, 0.020]$ & 0.970 & 0.030 \\
+		Sparc2         & -0.392 & $[-1.201 \,;\, 0.059]$ & 0.955 & 0.045 \\
+		pT2Pv6         &  0.216 & $[-0.095 \,;\, 0.898]$ & 0.130 & 0.870 \\
+		\hline
+	\end{tabular}
+	\caption[Estimations \textit{a posteriori} du sous-modèle réduit à partir du modèle de référence global]{Estimations \textit{a posteriori} des coefficients du sous-modèle à quatre variables à partir du modèle de référence global. La médiane et l'intervalle de crédibilité à 95\,\% (IC$_{95\%}$) résument la distribution \textit{a posteriori} de chaque coefficient~; $\text{P}(\beta_j < 0)$ et $\text{P}(\beta_j > 0)$ indiquent la probabilité \textit{a posteriori} que le coefficient soit négatif ou positif, respectivement (probabilité de direction).}
+	\label{table:inf_full}
+\end{table}
+
+
+%\begin{tabular}{lrr}
+%	\hline
+%	& 0 & 1\\
+%	\hline
+%	0 & 34 & 13\\
+%	1 & 12 & 31\\
+%	\hline
+%\end{tabular}
+
+\subsection{Diagnostics MCMC et approximation PSIS-LOO}
+Les diagnostics MCMC à travers les \textit{traceplots}, les fonctions d'autocorrélation, les histogrammes et les distributions marginales (figure~\ref{fig:diag_mcmc_ex}) ne révèlent pas de problème majeur de convergence. Néanmoins, les \textit{traceplots} montrent des pics ponctuels vers des valeurs extrêmes. Ce comportement peut être attendu avec un prior horeshoe en situation d'incertitude, ses queues lourdes autorisant l'exploration de grandes valeurs de coefficients. L'ensemble des paramètres affiche un $\hat{R}$ inférieur à 1.01 et une taille effective d'échantillon > 400.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.7]{diag_mcmc_ex.pdf}
+	\caption[Diagnostics MCMC pour le paramètre \texttt{L2\_large}, modèle global]{%
+	Exemple de diagnostics MCMC illustrés pour le paramètre \texttt{L2\_large}, sélectionné à partir du modèle global. De gauche à droite et de haut en bas~: (1) \textit{traceplot} des chaînes, un bon mélange est souhaité et se traduit par des chaînes entrelacées, similaires à un bruit blanc~; (2) fonction d'autocorrélation, une décroissance rapide vers zéro est souhaitée, ce indique une faible dépendance entre échantillons successifs~; (3) histogramme de la distribution \textit{a posteriori}, il doit contenir assez d'informations pour approximer la densité~; (4) courbe de densité estimée \textit{a posteriori}, l'axe \textit{x} de l'histogramme et de la courbe de densité est exprimé en taille d'effet standardisée. %Les pics ponctuels vers des valeurs extrêmes visibles sur le \textit{traceplot} reflètent les queues	lourdes du prior horseshoe et ne constituent pas un signe de non-convergence.
+	}
+	\label{fig:diag_mcmc_ex}
+\end{figure}
+
+
+Concernant l'approximation PSIS-LOO, 9 observations présentent un $\hat{k}$ de Pareto supérieur à $0.7$ (environ 10\,\% des observations), seuil au-delà duquel l'estimation PSIS est considérée peu fiable pour l'observation concernée \parencite{Vehtari2015Jul}. Ce résultat invite à interpréter les valeurs d'elpd avec prudence.
+
+
+\subsection{Sensibilité au prior ($p_0$)}
+
+Afin d'évaluer l'influence du prior sur les résultats, deux valeurs alternatives du paramètre $p_0$ ont été testées et comparées à la valeur de référence.
+
+Les trois configurations conduisent à la sélection des mêmes quatre variables, dans le même ordre, avec des stabilités par \textit{fold} comparables. Les estimations \textit{a posteriori} des coefficients sont stables. Exprimés en fraction de la largeur de l'intervalle de crédibilité à 95\,\% du modèle de référence, les écarts normalisés $\delta_\text{norm}$ restent inférieurs à 10\% pour l'ensemble des paramètres et des deux valeurs alternatives testées (tableau~\ref{table:sensi_full}). %Le déplacement le plus important concerne \texttt{pT2Pv6} avec $p_0 = 20$ ($\delta_\text{norm} = 10.9\,\%$), ce qui demeure négligeable au regard de l'incertitude déjà présente sur ce coefficient.
+Les signes et ordres de grandeur des effets sont identiques dans toutes les configurations.
+
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{lccccc}
+		\hline
+		& $\hat\beta_{\text{ref}}$ & $\hat\beta_{p_0=5}$ & $\delta_{\text{norm}} (\%)$ & $\hat\beta_{p_0=20}$ & $\delta_{\text{norm}} (\%)$ \\
+		\hline
+		Intercept     &  0.035 & 0.016  & 1.9 & 0.041  & 0.6 \\
+		L2\_large     & -0.738 & -0.732 & 0.4 & -0.754 & 1.1 \\
+		Sparc\_small  & -0.400 & -0.343 & 4.9 & -0.493 & 8.0 \\
+		Sparc2        & -0.392 & -0.272 & 9.5 & -0.469 & 6.1 \\
+		pT2Pv6        &  0.216 & 0.143  & 7.3 & 0.325  & 10.9 \\
+		\hline
+	\end{tabular}
+	\caption[Analyse de sensibilité au prior $p_0$ pour le modèle complet]{Analyse de sensibilité des estimations \textit{a posteriori} au choix du paramètre $p_0$ du prior horseshoe. $\hat\beta_{\text{ref}}$ désigne la médiane \textit{a posteriori} du modèle de référence ($p_0 = 10$)~; $\delta_{\text{norm}}$ est l'écart normalisé en fonction de l'intervalle de crédibilité, tel que $\delta_{\text{norm}} = |\hat\beta_{p_0} - \hat\beta_{\text{ref}}|\,/\,(\text{largeur IC}_{95\%}^{\text{ref}}) \times 100$}
+	\label{table:sensi_full}
+\end{table} 
+
+Sur le plan prédictif, les performances sont stables. Les valeurs d'elpd et d'accuracy du modèle de référence et du sous-modèle restent du même ordre quelque soit la valeur de $p_0$. On note toutefois qu'avec $p_0 = 20$, l'accuracy du sous-modèle (0.689) est supérieure à celle du modèle de référence (0.667), tandis que les valeurs d'elpd demeurent proches. À l'inverse, avec $p_0 = 5$, les deux métriques convergent et les estimations des coefficients sont légèrement plus faibles. Cela indique une régularisation plus forte. La configuration $p_0 = 10$ semble donc être un compromis satisfaisant.
+
+%
+%
+%avec p0 = 5
+%stabilité 0.99,0.90,0.96,0.94 idem variables
+%ELPD  — réf : -58.63  | sous-modèle : -55.67
+%Accuracy — réf : 0.667 | sous-modèle : 0.656
+%
+%avec p0 = 20 
+%stabilité 0.99, 0.94, 0.96, 0.93 idem variables
+%
+%ELPD  — réf : -57.72  | sous-modèle : -54.43
+%Accuracy — réf : 0.667 | sous-modèle : 0.689
+%
+%L'analyse de sensibilité montre que le choix du prior p0 n'affecte ni l'ordre de sélection des variables, ni la stabilité du modèle, ni l'estimation des tailles d'effet (très très peu) ni ELPD/accuracy -> rédiger bien.
+%
+%Néamoins avec p0 = 20 : coeff plus grand et plus petit avec p0 = 5. Et avec p0=20 accuracy du sous modèle plus grande mais elpd idem -> léger surapprentissage. Entre autre avec p0 = 10 hs prior fait son travail comme il faut pour éviter le surapprentissage et laisser exprimer le sgrands effets.
+\section{Screening par tâche motrice}
+
+La comparaison des modèles par tâche motrice via LOO-CV (%tableau~\ref{table:loo_compare}, 
+voir figure~\ref{fig:loo_compare}) indique que le modèle restreint à la tâche PA est statistiquement équivalent au modèle complet ($\Delta$elpd $= -2.21$, $\widehat{SE} = 3.21$) selon le critère de l'erreur standard sur la différence d'elpd, tout en reposant sur un espace de variables nettement plus faible. En effet, le modèle PA présente un $p_\text{loo}$ (nombre de paramètres effectifs) plus faible que le modèle complet (8.08 vs 23.84), ce qui indique un modèle plus parcimonieux.
+
+Les modèles fondés sur les tâches Epow, ll\_ln et PS\_lin affichent des performances inférieures, avec des différences d'elpd qui excèdent leur erreur standard respective (voir figure~\ref{fig:loo_compare}).
+
+
+%\begin{tabular}{lrrrrrrrr} % garder éventuellement que jusqu'à se elpd loo
+%	\hline
+%	& elpd\_diff & se\_diff & elpd\_loo & se\_elpd\_loo & p\_loo & se\_p\_loo & looic & se\_looic\\
+%	\hline
+%	PA & 0.00 & 0.00 & -55.27 & 4.31 & 8.08 & 1.41 & 110.54 & 8.62\\
+%	Full & -2.21 & 3.21 & -57.49 & 5.32 & 23.84 & 3.63 & 114.97 & 10.65\\
+%	Epow & -5.57 & 4.63 & -60.84 & 2.79 & 5.94 & 0.61 & 121.68 & 5.57\\
+%	ll\_ln & -6.87 & 4.02 & -62.14 & 2.14 & 5.33 & 0.53 & 124.28 & 4.28\\
+%	PS\_lin & -7.54 & 4.39 & -62.81 & 4.53 & 12.92 & 2.78 & 125.62 & 9.06\\
+%	\hline
+%\caption[Statistiques LOO-CV par tâche motrice]{%
+%	Statistiques LOO-CV pour chaque modèle par tâche motrice, classés par ordre 
+%	décroissant de performance prédictive. $\Delta$elpd~: différence d'ELPD par 
+%	rapport au meilleur modèle (PA)~; $\widehat{SE}$~: erreur standard associée~; 
+%	elpd\_loo~: ELPD estimé par LOO-CV~; $p_\text{loo}$~: nombre effectif de 
+%	paramètres, indicateur de complexité du modèle~; looic~: critère d'information 
+%	LOO ($= -2 \times \text{elpd\_loo}$).}
+%\label{table:loo_compare}
+%\end{tabular}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=1]{loo_compare.pdf}
+	\caption[Comparaison des modèles par tâche]{Comparaison des modèles par tâche selon l'elpd estimé par LOO-CV. Chaque point représente la différence d'elpd entre le modèle considéré et le meilleur modèle (PA, fixé à 0)~; les barres d'erreur indiquent	$\pm 1$ erreur standard sur cette différence. Une différence dont l'intervalle d'erreur standard chevauche zéro indique des performances prédictives statistiquement équivalentes au modèle issu de la tâche PA. Le modèle global (Full) est donc statistiquement équivalent à celui de la tâche PA.}
+	\label{fig:loo_compare}
+\end{figure}
+
+% mettre graph OU tableau
+Ces résultats sont cohérents avec ceux de la section précédente, où les deux premières variables sélectionnées (\texttt{L2\_large}, \texttt{Sparc\_small}) sur le modèle complet appartenaient déjà à la tâche PA. La projection prédictive est donc conduite dans un second temps en restreignant l'espace des variables à cette seule tâche.
+\section{Sélection sur la tâche PA}
+
+\subsection{Courbe elpd et sélection des variables} \label{sec:sel_PA}
+La projection prédictive appliquée aux variables de la tâche PA conduit à la sélection de deux variables, \texttt{L2\_large} et \texttt{Sparc\_small}, retenues avec une stabilité de 0.99 chacune sur l'ensemble des \textit{folds} (voir annexe XXX). Le critère de l'erreur standard, la stabilité de sélection et le coude de la courbe elpd (figure~\ref{fig:elpd_PA}) convergent vers $k_\text{opt} = 2$. Il est important de noter que ces deux variables correspondent aux deux premières retenues lors de la sélection sur le modèle global (section~\ref{sec:sel_global}).
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=1]{elpd_PA.pdf}
+	\caption[Courbes elpd et d'accuracy issue du modèle de référence PA]{Courbes de l'elpd et de l'accuracy issues du modèle de référence PA, en fonction du nombre de variables incluses dans le sous-modèle, obtenue par projection predictive avec validation croisée. Chaque point représente la différence d'elpd/d'accuracy entre le sous-modèle et le modèle de référence. Les barres d'erreur indiquent l'incertitude à $\pm 1$ erreur standard. Une différence proche de zéro indique des performances prédictives équivalentes au modèle de référence.}
+	\label{fig:elpd_PA}
+\end{figure}
+
+Les performances prédictives du sous-modèle sont comparables à celles du modèle de référence PA (sous-modèle vs référence~; elpd : $-52.82$ vs $-55.28$, accuracy : 0.700 vs 0.700). La matrice de confusion indique 15 faux négatifs et 11 faux positifs sur 90 observations. Ces performances sont légèrement supérieures à celles obtenues sur le modèle global (section~\ref{sec:sel_global}), ce qui suggère que la restriction de l'espace des variables à la tâche PA réduit le bruit introduit par des variables peu informatives. On notera que l'elpd du sous-modèle est légèrement supérieur à celui du modèle de référence (figure~\ref{fig:elpd_PA}), ce qui peut refléter la régularisation induite par la réduction du modèle.
+
+
+%
+%\begin{tabular}{lrr}
+%	\hline
+%	& 0 & 1\\
+%	\hline
+%	0 & 35 & 15\\
+%	1 & 11 & 29\\
+%	\hline
+%\end{tabular}
+
+Les estimations des coefficients \textit{a posteriori}, conditionnellement au modèle et aux données, sont présentées dans le tableau~\ref{table:inf_PA} et la figure~\ref{fig:mcmc_areas_cvvs_PA}. Les deux coefficients sont négatifs, avec des médianes respectivement de $-0.883$ et $-0.502$, et une incertitude réduite sur le signe des effets malgré une incertitude importante sur leur taille. Ces estimations sont proches de celles obtenues lors de la sélection sur le modèle complet, avec des écarts relatifs sur les médianes de 16\,\% pour \texttt{L2\_large} et 20\,\% pour \texttt{Sparc\_small}.
+
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.8]{mcmc_areas_cvvs_PA.pdf}
+	\caption[Distributions \textit{a posteriori} du sous-modèle réduit à partir du modèle de référence PA]{Distributions \textit{a posteriori} des coefficients de régression du sous-modèle à deux variables à partir du modèle de référence PA. Pour chaque paramètre, la barre verticale bleue indique la médiane \textit{a posteriori} et la zone bleue représente l'intervalle de crédibilité à 95\,\% (IC$_{95\%}$). Conditionnellement au modèle et aux données, la valeur du paramètre a 95\,\% de chance de se situer dans cet intervalle.}
+	\label{fig:mcmc_areas_cvvs_PA}
+\end{figure}
+
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{lcccc}
+		\hline
+		& Médiane & $\text{IC}_{95\%}$ & $\text{P}(\beta_j < 0)$ & $\text{P}(\beta_j > 0)$ \\
+		\hline
+		Intercept      &  -0.011 & $[-0.463 \,;\, 0.463]$ & 0.52 & 0.48 \\
+		L2\_large      & -0.883 & $[-1.524 \,;\, -0.076]$ & 0.99 & 0.01 \\
+		Sparc\_small   & -0.502 & $[-1.169 \,;\, -0.028]$ & 0.97 & 0.03 \\
+		\hline
+	\end{tabular}
+	\caption[Estimations \textit{a posteriori} du sous-modèle réduit à partir du modèle de référence PA]{Estimations \textit{a posteriori} des coefficients du sous-modèle à deux variables à partir du modèle de référence PA. La médiane et l'intervalle de crédibilité à 95\,\% (IC$_{95\%}$) résument la distribution \textit{a posteriori} de chaque coefficient~; $\text{P}(\beta_j < 0)$ et $\text{P}(\beta_j > 0)$ indiquent la probabilité \textit{a posteriori} que le coefficient soit négatif ou positif, respectivement (probabilité de direction).}
+	\label{table:inf_PA}
+\end{table}
+
+\subsection{Diagnostics MCMC et approximation PSIS-LOO}
+
+Les diagnostics MCMC (figure~\ref{fig:diag_mcmc_ex_PA}) ne révèlent pas de problème de convergence et l'ensemble des paramètres affiche un $\hat{R} < 1.01$ ainsi qu'une taille effective d'échantillon > 400.
+
+L'approximation PSIS-LOO est fiable pour l'ensemble des observations. Aucun $\hat{k}$ de Pareto ne dépasse le seuil de $0.7$, ce qui contraste avec les résultats obtenus sur le modèle global et renforce la confiance dans les estimations d'elpd utilisées pour la sélection avec le modèle de référence PA.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.7]{diag_mcmc_ex_PA.pdf}
+	\caption[Diagnostics MCMC pour le paramètre \texttt{L2\_large}, modèle PA]{Exemple de diagnostics MCMC illustrés pour le paramètre \texttt{L2\_large}, sélectionné à partir du modèle PA. De gauche à droite et de haut en bas~: (1) \textit{traceplot} des chaînes, un bon mélange est souhaité et se traduit par des chaînes entrelacées, similaires à un bruit blanc~; (2) fonction d'autocorrélation, une décroissance rapide vers zéro est souhaitée, ce indique une faible dépendance entre échantillons successifs~; (3) histogramme de la distribution \textit{a posteriori}, il doit contenir assez d'informations pour approximer la densité~; (4) courbe de densité estimée \textit{a posteriori}, l'axe \textit{x} de l'histogramme et de la courbe de densité est exprimé en taille d'effet standardisée. % est-ce que je répète vraiment tout ?
+	}
+	\label{fig:diag_mcmc_ex_PA}
+\end{figure}
+
+
+\subsection{Sensibilité au prior ($p_0$)}
+Deux valeurs alternatives du paramètre $p_0$ ont été testées et comparées à la valeur de référence ($p_0 = 5$). Les trois configurations conduisent à la sélection des mêmes deux variables, dans le même ordre, avec des stabilités par \textit{fold} identiques (0.99 et 0.99 dans toutes les configurations). Les estimations \textit{a posteriori} sont stables : les écarts normalisés $\delta_{\text{norm}}$ sont inférieurs à 4\,\% pour l'ensemble des paramètres (tableau~\ref{table:sensi_PA}).
+
+Sur le plan prédictif, les performances restent globalement stables. Avec $p_0 = 10$, on observe néanmoins que l'accuracy du modèle de référence augmente (0.711) alors que celle du sous-modèle ne suit pas (0.700), tandis que les valeurs d'elpd évoluent peu. Cela suggère un léger surapprentissage du modèle de référence. 
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{lccccc}
+		\hline
+		& $\hat\beta_{\text{ref}}$ & $\hat\beta_{p_0=3}$ & $\delta_{\text{norm}} (\%)$ & $\hat\beta_{p_0=10}$ & $\delta_{\text{norm}} (\%)$ \\
+		\hline
+		Intercept    & -0.011 & -0.033 & 2.4 & 0.008  & 2.0 \\ 
+		L2\_large    & -0.883 & -0.898 & 1.0 & -0.939 & 3.9 \\
+		Sparc\_small & -0.502 & -0.483 & 1.7 & -0.508 & 0.5 \\
+		\hline
+	\end{tabular}
+	\caption[Analyse de sensibilité au prior $p_0$, modèle PA]{Analyse de sensibilité des estimations \textit{a posteriori} au choix du paramètre $p_0$ du prior horeshoe du modèle PA. $\hat\beta_{\text{ref}}$ désigne la médiane \textit{a posteriori} du modèle de référence ($p_0 = 5)$~; $\delta_{\text{norm}}$ est l'écart normalisé en fonction de l'intervalle de crédibilité, tel que $\delta_{\text{norm}} = |\hat\beta_{p_0} - \hat\beta_{\text{ref}}|\,/\,(\text{largeur IC}_{95\%}^{\text{ref}}) \times 100$}
+	\label{table:sensi_PA}
+\end{table}
+
+%A p10 : stabilité idem (0.99, 0.99) 
+%
+%ELPD  — réf : -55.42  | sous-modèle : -52.47
+%Accuracy — réf : 0.711 | sous-modèle : 0.700 -> léger signe d'overfitting, puisqu'avec prior plus souple accuracy augmente mais pas elpd. De plus, l'accuracy du sous-modèle ne suit pas l'accuracy croissante de la référence, ce qui suggère que le gain en accuracy à p10 est capté par la complexité du modèle de référence, pas par une meilleure généralisation du sous-modèle. Idem pour elpd : légère perte avec sous modèle. Sinon idem
+%
+%A p3 : stabilité idem (0.99, 0.99) 
+%ELPD  — réf : -55.20  | sous-modèle : -53.04
+%Accuracy — réf : 0.667 | sous-modèle : 0.689
+
+%
+%
+%\begin{table}[ht]
+%	\centering
+%	\begin{tabular}{lccccc}
+%		\hline
+%		& Médiane ref p0 = 5 & Mediane p0 = 3 & Ecart relatif & Mediane p0 = 10 & Ecart relatif \\
+%		\hline
+%		Intercept      & -0.011 & -0.033 & 2 & 0.008 &\\
+%		L2\_large      & -0.883 & -0.898 &  & -0.939 &\\
+%		Sparc\_small   & -0.502 & -0.483 &  & -0.508 &\\
+%		\hline
+%	\end{tabular}
+%	\caption[]{blabla ecart relatif def tel que |p0 diff - p0 ref|/p0 ref}
+%	\label{table:sensi_PA}
+%\end{table}
+
+\subsection{Représentation dans l'espace des variables sélectionnées}
+
+La figure~\ref{fig:espace_sel} représente les observations dans l'espace des deux variables sélectionnées, \texttt{L2\_large} et \texttt{Sparc\_small}. Les deux groupes forment des nuages distincts mais se chevauchent partiellement. Ce chevauchement est cohérent avec les performances prédictives observées (accuracy de 0.700).
+
+
+\begin{figure}[h!] % rajouter la droite de la regression ?
+	\centering
+	\includegraphics[scale=1.2]{espace_sel.pdf}
+    \caption[Représentation des observations dans l'espace des variables 
+	sélectionnées]{Représentation des observations dans l'espace des deux variables sélectionnées par projection prédictive sur la tâche PA (\texttt{L2\_large} et \texttt{Sparc\_small}). Les unités des axes sont en taille d'effet standardisée. }
+	\label{fig:espace_sel}
+\end{figure}
+
+En conclusion, l'ensemble de ces analyses semble donc converger. Le modèle global produit une sélection stable malgré une incertitude élevée sur les différences d'elpd. Le screening par tâche motrice montre que le modèle restreint à la tâche PA est équivalent au modèle complet tout en reposant sur un espace de variables plus faible. La projection prédictive conduite sur ce sous-espace aboutit à un sous-modèle à deux variables, \texttt{L2\_large} et \texttt{Sparc\_small}, dont la sélection est très stable ($0.99$ sur l'ensemble des \textit{folds}) et cohérente avec les deux premières variables retenues sur le modèle global. Ces résultats sont peu sensibles au choix du prior $p_0$. De plus, les deux coefficients sont négatifs~: des valeurs plus élevées de \texttt{L2\_large} et de \texttt{Sparc\_small} sont associées à une probabilité réduite d'appartenir au groupe TSA, bien que l'incertitude sur la taille de ces effets demeure importante.
+
+%
+%\section{Performance prédictive}
+%
+%\subsection{Modèle global}
+%
+%\subsection{Modèle de référence PA}
+%
+%\subsection{Sous-modèle réduit}
+%(+ tableau comparatif elpd / accuracy LOO)
+%(accuracy LOO, PPA, matrice de confusion...)

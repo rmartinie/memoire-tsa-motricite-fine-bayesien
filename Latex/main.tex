@@ -1,0 +1,227 @@
+\documentclass[11pt]{report}
+\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm,marginparwidth=2cm]{geometry}
+\usepackage[T1]{fontenc}
+%\usepackage{natbib}
+\usepackage[style=apa, backend = biber]{biblatex}
+\addbibresource{biblio.bib}
+\usepackage{csquotes}
+\usepackage[french]{babel}
+\usepackage{
+    setspace,
+    %amsthm,
+    graphicx,
+    %svg,
+    array,
+    enumitem,
+    tabularx,
+    titlesec,
+    tocloft
+}
+%\usepackage[hyphens]{url}   % permet de couper les URLs sur les tirets
+%\usepackage{breakurl}  
+%\usepackage{wrapfig}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{amsmath} 
+
+
+
+% Configuration des chemins
+\graphicspath{{images/}}
+
+% Configuration des tableaux
+%\let\oldtabular\tabular
+%\def\tabular{\footnotesize\oldtabular}
+
+%\let\oldtabularx\tabularx
+%\def\tabularx{\footnotesize\oldtabularx}
+
+% Configuration des titres
+\titleformat{\chapter}[hang]
+    {\normalfont\Huge\bfseries}
+    {\thechapter}
+    {1em}
+    {}
+
+\titlespacing*{\chapter}
+    {0pt}       % indentation à gauche
+    {0.2em}    % espace au-dessus du titre
+    {1.8em}       % espace après le titre
+    
+\titleformat{\paragraph}
+    {\normalfont\normalsize\itshape}
+    {\theparagraph}
+    {1em}
+    {}
+
+\titlespacing*{\paragraph}
+    {0pt}
+    {3.25ex plus 1ex minus .2ex}
+    {1.5ex plus .2ex}
+    
+\titlespacing*{\subsection}
+    {0pt}
+	{2.5ex plus 1ex minus .2ex}
+	{1.5ex plus .2ex}
+
+% Configuration de la table des matières
+\setcounter{tocdepth}{3}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% Cacher numéro de page : à réafficher à l'intro
+\pagenumbering{gobble}
+
+\begin{titlepage}
+    \centering
+    % En-tête avec logos
+    \includegraphics[height=0.22\textwidth]{images/ens.pdf}
+    \hspace{5pt}
+    \raisebox{0.5\height}{\vrule width 1pt height 50pt}
+    \hspace{5pt}
+    \includegraphics[height=0.22\textwidth]{images/R1.pdf}
+    \vspace{1cm}
+
+    % Informations institutionnelles
+    \Large
+    {\textbf{École normale supérieure de Rennes\\
+    Département Sciences du sport et éducation physique}}
+    \vspace{0.5cm}
+
+    {\textbf{Diplôme de l'ENS -- 1\textsuperscript{ère} année\\
+    Année universitaire 2025-2026\\
+    Discipline : STAPS}}
+    \vspace{1cm}
+
+    {\textit{Mémoire en Sciences de la Vie et de la Santé}}
+    \vspace{1cm}
+
+    % Titre du mémoire
+    \rule{\linewidth}{0.5mm} \\[0.5cm]
+    \huge \textbf{Identification des marqueurs de motricité fine les plus caractéristiques des TSA chez l'enfant : Approche bayésienne par projection prédictive 
+} \\[0.5cm]
+    \rule{\linewidth}{0.5mm} \\[1cm]
+
+    % Auteurs et encadrant
+    \Large
+    \textbf{Présenté par :}\\
+    Romain MARTINIE
+    \vspace{1cm}
+
+    \textbf{Encadrants :}\\
+    Laetitia FRADET (Université de Bretagne-Sud) \\ \& \\ Germain FAITY (ENS, département 2SEP)
+\end{titlepage}
+
+\onehalfspacing
+\newpage
+\null
+\newpage
+
+% Remerciements
+%\chapter*{Remerciements}
+%\newpage
+
+% Attestation sur l'honneur
+\chapter*{Attestation sur l'honneur}
+Je soussigné, Romain MARTINIE, atteste sur l'honneur de ne pas avoir eu recours au plagiat et que ce mémoire de recherche est le résultat d'un travail personnel. La rédaction de ce travail a été effectuée avec l'aide d'intelligence artificielle générative (modèle Claude Sonnet 4.6 : assistance dans le code, les formulations et correction de la langue).
+\newpage
+
+
+% Sommaire
+\tableofcontents
+\newpage
+
+% Liste des abrévations
+%\chapter*{Liste des abrévations}
+%\newpage
+
+% Tables des illustrations
+%\chapter*{Tables des illustrations}
+\begingroup
+\let\clearpage\relax
+\listoffigures
+\listoftables
+\endgroup
+
+%\chapter*{Table des annexes}
+%\begin{itemize}[label={},leftmargin=1.5em]
+%\end{itemize}
+%\newpage
+
+
+
+
+% Introduction
+\chapter{Introduction}
+
+\pagenumbering{gobble}
+\pagestyle{plain}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+En France, en 2003, les registres régionaux estimaient la prévalence des troubles du spectre de l'autisme (TSA) chez les enfants de moins de sept ans à 4,1 pour 1 000 \parencite[p.10]{HAS2018_TSA}. Cette valeur est probablement sous-évaluée, car les formes plus modérées échappent souvent aux dispositifs d'identification \parencite[p.10]{HAS2018_TSA}. Par ailleurs, le nombre de diagnostics tend à augmenter \parencite{zeidan_global_2022} et la reconnaissance institutionnelle des TSA s'accroît\footnote{Comme en témoigne en France la \textit{Stratégie nationale pour les troubles du neurodéveloppement 2023-2027}, \url{https://handicap.gouv.fr/nouvelle-strategie-nationale-pour-les-troubles-du-neurodeveloppement-autisme-dys-tdah-tdi}}. Les retards dans le diagnostic peuvent dépasser un an entre la première prise de contact et la restitution du diagnostic en France dans le cadre d'un Centre de Ressources Autisme (CRA) \footnote{IGAS. (2015). \textit{Évaluation des Centres de ressources autisme (CRA) en appui de leur évolution} (p. 37). \url{https://igas.gouv.fr/sites/igas/files/files-spip/pdf/2015-124R-2.pdf}}, illustrant la difficulté à diagnostiquer les individus autistes.
+
+\bigskip
+
+Le diagnostic, posé par un psychiatre, repose principalement sur les altérations de la communication et des interactions sociales, ainsi que sur les comportements stéréotypés et les intérêts restreints \parencite[p.~56–58]{apa_diagnostic_2022}. Cette approche présente des limites en pratique clinique, pouvant conduire à des biais (par exemple liés au genre, voir Section \ref{sec:norme}) ou expliquer en partie les retards dans la prise en charge par les CRA.
+
+\bigskip
+
+Pour autant, la littérature montre que les TSA s'accompagnent de caractéristiques motrices qui ne sont pas exploitées pour le diagnostic. Ces particularités apparaissent pourtant précocement, parfois dès les premiers mois de vie, voire avant les signes sociaux atypiques \parencite{Zwaigenbaum2015Oct, AlSagheer2018Sep}. Parallèlement, des corrélats neuronaux pourraient expliquer ces manifestations motrices et le phénotype autistique dans son ensemble (voir Section \ref{sec:bases_neuro}). Ces observations suggèrent que les caractéristiques motrices pourraient ainsi constituer des marqueurs précoces du développement autistique.
+
+
+\bigskip
+
+Ce mémoire s'inscrit dans la continuité des travaux réalisés dans le cadre du projet "\textit{Identifier et caractériser les déficits moteurs associés aux troubles du spectre autistique}", dont une partie des données a déjà été exploitée dans la thèse de \textcite{benchekri_mieux_2024}. En mobilisant une approche bayésienne, ce mémoire vise à identifier les variables de motricité fine les plus caractéristiques des enfants autistes, afin de proposer des pistes d'amélioration dans la compréhension et le diagnostic des TSA.
+
+
+
+%En France, en 2003, les registres régionaux estimaient la prévalence des troubles du spectre de l'autisme (TSA) chez les enfants de moins de sept ans à 4,1 pour 1 000 \parencite[p.10]{HAS2018_TSA}. Cette valeur est considérée comme sous-évaluée puisque les formes plus modérées échappent souvent aux dispositifs d'identification \parencite[p.10]{HAS2018_TSA}. Malgré une tendance à l'augmentation du nombre de diagnostics \parencite{zeidan_global_2022} et une reconnaissance institutionnelle croissante \footnote{Comme en témoigne en France la \textit{Stratégie nationale pour les troubles du neurodéveloppement 2023-2027}, \url{https://handicap.gouv.fr/nouvelle-strategie-nationale-pour-les-troubles-du-neurodeveloppement-autisme-dys-tdah-tdi}}, la compréhension des TSA reste partielle. Le diagnostic est posé par des psychiatre et se base principalement sur altérations de communication/interactions sociales et comprotements térétotypés et intérêts marqués \parencite[p.~56–58]{apa_diagnostic_2022}. Les retards dans le diagnostic peuvent dépasser 1 an d'attente entre 1ere prise de contact (déjà pas évidente à obtenir) et restitution du diagnostic pour CRA. \footnote{\url{https://comprendrelautisme.com/les-acteurs/les-centres-de-ressources-autisme/}}, ce qui illustre les difficultés à identifier précocement ces troubles.
+
+\bigskip
+
+%Or, la littérature montre que les TSA s'accompagnent aussi de corrélats neuronaux (voir Section \ref{sec:bases_neuro}) qui pourraient expliquer le phénotype autistique, et des spécifictés motrices (voir Section \ref{sec:controle_moteur}). Ces composantes motrices, souvent négligées, apparaissent pourtant précocement, parfois dès les premiers mois de vie, voire avant les signes sociaux atypiques \parencite{Zwaigenbaum2015Oct, AlSagheer2018Sep}. Leur méconnaissance limite la capacité à identifier et comprendre précocement les TSA.
+
+\bigskip
+
+%Ce mémoire se propose d'examiner ces composantes motrices comme des marqueurs précoces du développement autistique. En mobilisant une approche bayésienne, il vise à sélectionner les variables de motricité fine les plus caractéristiques des enfants autistes, au sein de plusieurs tâches de motrcité fine. Afin de contribuer à une meilleure compréhension et à l'amélioration du diagnostic des TSA.
+
+
+\bigskip
+
+%Ce mémoire s'inscrit dans la continuité des travaux réalisés dans le cadre du projet "\textit{Identifier et caractériser les déficits moteurs associés aux troubles du spectre autistique}", dont une partie des données a déjà été exploitée dans la thèse de \textcite{benchekri_mieux_2024}. En mobilisant une approche bayésienne, ce mémoire vise à identifier les variables de motricité fine les plus caractéristiques des enfants autistes, afin de proposer des pistes d'amélioration dans la compréhension et le diagnostic des TSA.
+
+\input{RDL}
+
+\input{methode}
+
+\input{resultats}
+
+\input{discussion}
+
+% Conclusion
+\chapter{Conclusion}
+
+
+\newpage
+% Bibliographie
+\pagestyle{empty}
+
+\begingroup
+\small % Ajuste la taille de la police
+\setstretch{1.0} % Ajuste l'interligne
+\printbibliography
+%\bibliographystyle{apalike}
+%\bibliography{biblio}
+\endgroup
+
+
+\newpage
+
+\input{Annexes}
+
+
+%\input{abstract}
+
+\end{document}

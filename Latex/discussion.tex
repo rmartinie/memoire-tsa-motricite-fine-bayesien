@@ -1,0 +1,62 @@
+\chapter{Discussion}
+
+
+la convergence des résultats entre le modèle PA et le modèle global malgré l'incertitude de ce dernier constitue un élément de validation indirecte de l'approche par décomposition
+
+
+ Modèle complet (144 vars) → ELPD trop incertain pour conclure, mais tendance à 
+ 2-7 variables stable en sensibilité → justifie de décomposer par tâche → T1 domine
+ les autres tâches au sens |elpd\_diff| > se\_diff → cv\_varsel sur T1 → 2 variables 
+ (L2\_large, Sparc\_small) capturent l'essentiel avec elpd.diff = 2.45, se = 0.83 pour
+ la taille 2 vs taille 3, ce qui est le seuil opti
+ Dans cet échantillon, L2\_large et Sparc\_small constituent le sous-ensemble le plus 
+ parcimonieux identifié par la sélection projective sur la tâche T1, avec une performance
+ prédictive non distinguable du modèle de référence complet. La stabilité de leur sélection
+ (cv\_proportions ~ 0.99) renforce leur statut de variables candidates pour des études 
+ futures, sans pour autant permettre une inférence causale oun <- 94
+ à la population TSA. + anticipation pointage
+ Si Sparc\_small bien, Sparc\_large presque aussi bien, mais redondant donc non sélectionné
+ Pour autant, L2\_large largement supérieur à L2\_small qui ne capture pas d'information
+
+
+
+ intention au départ : visiblement on tend à dire que PA suffirait 
+ + accent sur 2 variables, une liée à cible petite et une cible large
+ spectre + tout les domaines enfants pas forcément différents
+ enfants peut être en difficulté sur certaines tâches pour les uns, d'autres pour d'autres
+ %kmeans ? -> si clusterisation similaire imposée PCA/kmeans ?
+
+
+
+on a identifié des biomarqueurs moteurs de façon certaine, en éliminant bruit et redondance, mais modéré dans leur capacité à prédire quoi 
+ 
+ 
+Age et sexe pas informatives : c'est normal !! puisque jeu de données équilibré, contrairement à la population général 
+
+\section{Interprétation des variables sélectionnées}
+Résultat principal 
+L2 large + sparc small -> augmentation de la variable diminue proba de prédire TSA. Rapporter en odd ratio pour interprétation.
+Sparc\_small/L2large : qu'est-ce qu'elles traduisent de différent
+Fluidité : à quoi associé en terme de controles smoothness motor control...
+Idem pour longueur de tâche
+bioméca + intégrationsenso visuo/motrice
+
+L2\_large distance plus courte, lien parkinson etc
+
+Tâche PA  
+
+Résultat secondaire
+On peut regarde les variables sparc2 et pT2Pv6 du modèle réduit à partir du modèle de référence global, car stabilité ++ même si incertitude sur l'information que ça apporte. Rapporter en odd ratio pour interprétation.
+
+
+
+Si accuracy modérée, c'est parce que bcp de sujet sont entre 2 -> correspond avec l'idée de spectre. Il y a des cas extrêmes qu'on classifie très bien, uniquement sur les marqueurs moteurs. 
+
+Ce qui semble prédire : fluidité, donc plutôt sur des mouvement en feedforward et long (parce que peut être que quand TSA ils le font justement moins en feedforward). Et distance quand accuracy peu importante. Les composantes d'anticipation ne semble pas amener de l'information ?
+(lien avec la littérature sur la motricité fine et le TSA)
+\section{Apport de l'approche bayésienne}
+(par rapport à une régression classique)
+\section{Limites}
+(taille d'échantillon, na.omit, généralisabilité, k pareto sur modèle réduit à partir ref globale, incertitude)
+
+

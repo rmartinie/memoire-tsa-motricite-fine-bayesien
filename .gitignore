@@ -1,0 +1,16 @@
+Latex/*.aux
+Latex/*.log
+Latex/*.out
+Latex/*.toc
+Latex/*.bbl
+Latex/*.blg
+Latex/*.bcf
+Latex/*.run.xml
+Latex/*.synctex.gz
+Latex/*.lof
+Latex/*.lot
+
+*~
+*.swp
+.DS_Store
+
