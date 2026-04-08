@@ -234,7 +234,7 @@ L'application de la sélection par projection prédictive sur le modèle global 
 
 \medskip
 
-Pour contourner cette limite, le modèle global est décomposé en quatre sous-modèles de référence, un par tâche motrice (PA, ll\_ln, Epow, PS). Chaque sous-modèle est ajusté indépendamment avec le même prior RHS et la même procédure MCMC que le modèle global, à l'exception de $p_0 = 5$, ce qui reflète le moindre nombre de variables ($\tau_0$ recalculé en fonction, voir section~\ref{sec:prior}). La performance prédictive de chaque sous-modèle est estimée par PSIS-LOO et les $\hat{k}$ de Pareto sont rapportés pour chaque modèle. La comparaison des elpd entre sous-modèles et avec le modèle global est conduite par \texttt{loo\_compare} \parencite{loo} ; ces modèles n'étant pas nichés, cette comparaison est indicative et non un test formel.
+Pour contourner cette limite, le modèle global est décomposé en quatre sous-modèles de référence, un par tâche motrice (PA, ll\_ln, Epow, PS). Chaque sous-modèle est ajusté indépendamment avec le même prior RHS et la même procédure MCMC que le modèle global, à l'exception de $p_0 = 5$, ce qui reflète le moindre nombre de variables ($\tau_0$ recalculé en fonction, voir section~\ref{sec:prior}). La performance prédictive de chaque sous-modèle est estimée par PSIS-LOO et les $\hat{k}$ de Pareto sont rapportés pour chaque modèle. La comparaison des elpd entre sous-modèles et avec le modèle global est conduite par \texttt{loo\_compare} \parencite{loo}.
 
 \medskip 
 
