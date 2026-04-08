@@ -14,6 +14,8 @@
 	\centering
 	\includegraphics[scale=1]{ppc.pdf}
 \end{figure}
+Les histogrammes comparent la distribution des données réelles ($y$, en bleu clair) aux données simulées par le modèle($y_{rep}$, en bleu foncé, $\pm$ écart-type). A gauche, le \textit{prior predictive check}, c'est-à-dire la distribution des données simulées par le modèle avant d'avoir intégré les données. A droite, le \textit{posterior predictive check}, soit la distribution après que le modèle se soit ajusté aux données. La convergence des deux distributions sur le graphique de droite montre la capacité du modèle à capturer la structure des données TSA/TD, avec une incertitude résiduelle qui témoigne une absence de sur-apprentissage.
+
 \newpage
 \section*{Annexe C. Stabilité de sélection des variables par \textit{fold} à partir du modèle de référence global}\phantomsection\label{fig:stab_ref}
 
@@ -21,17 +23,24 @@
 	\centering
 	\includegraphics[scale=0.9]{stabilite_ref.pdf}ap
 \end{figure}
+
+Représente la fréquence de sélection des variables (en ordonnée) en fonction de la taille du sous-modèle (en abscisse) lors de la sélection par projection prédictive à partir du modèle de référence global. Chaque case indique le pourcentage de sélection d'une variable donnée entre les \textit{folds} de la validation croisée pour une taille de modèle $k$ jusqu'à $k=15$. 
+
 \newpage
 \section*{Annexe D. Stabilité de sélection des variables par \textit{fold} à partir du modèle de référence PA}\phantomsection\label{fig:stab_PA}
+
+
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.9]{stabilite_PA.pdf}
 \end{figure}
+Représente la fréquence de sélection des variables (en ordonnée) en fonction de la taille du sous-modèle (en abscisse) lors de la sélection par projection prédictive à partir du modèle de référence PA. Chaque case indique le pourcentage de sélection d'une variable donnée entre les \textit{folds} de la validation croisée pour une taille de modèle $k$ jusqu'à $k=15$. 
 \newpage
-\section*{Annexe E. Représentation des deux composantes principales issues de l'ACP réalisée sur les 4 variables sélectionnées pour les sujet TSA }\phantomsection\label{fig:acp}
+\section*{Annexe E. Représentation des deux composantes principales issues de l'ACP réalisée sur les 4 variables sélectionnées pour les sujets TSA }\phantomsection\label{fig:acp}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=1]{acp.pdf}
 \end{figure}
+Présente la projection des individus du groupe TSA sur les deux premières composantes principales issues d'une ACP réalisée sur les quatre variables les plus discriminantes identifiées par la projection prédictive à partir du modèle de référence global. La répartition des points montre une absence de clusters distincts, ce qui suggère que les variables de motricité fine sélectionnées varient de manière continue parmi les sujets, plutôt que de définir des sous-types de profils moteurs.
