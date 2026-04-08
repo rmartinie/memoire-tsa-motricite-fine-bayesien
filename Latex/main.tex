@@ -15,7 +15,8 @@
     enumitem,
     tabularx,
     titlesec,
-    tocloft
+    tocloft,
+    bm
 }
 %\usepackage[hyphens]{url}   % permet de couper les URLs sur les tirets
 %\usepackage{breakurl}  
@@ -120,8 +121,8 @@
 \newpage
 
 % Remerciements
-%\chapter*{Remerciements}
-%\newpage
+\chapter*{Remerciements}
+\newpage
 
 % Attestation sur l'honneur
 \chapter*{Attestation sur l'honneur}
@@ -134,8 +135,38 @@ Je soussigné, Romain MARTINIE, atteste sur l'honneur de ne pas avoir eu recours
 \newpage
 
 % Liste des abrévations
-%\chapter*{Liste des abrévations}
-%\newpage
+\chapter*{Liste des abréviations}
+
+\begin{tabular}{>{\bfseries}l l}
+	ACC & Cortex Cingulaire Antérieur \\
+	ACP & Analyse par Composantes Principales \\
+	ADI-R & \textit{Autism Diagnostic Interview, Revised} \\
+	ADOS & \textit{Autism Diagnostic Observation Schedule} \\
+	CRA & Centre de Ressources Autisme \\
+	DI & Déficience Intellectuelle \\
+	DMN & \textit{Default Mode Network} \\
+	elpd & \textit{Expected Log pointwise Predictive Density} \\
+	Epow & tâche d'isochronie \\
+	ID & Indice de Difficulté \\
+	ll\_ln & tâche d'anticipation écriture \\
+	LOO-CV & \textit{Leave-One-Out Cross-Validation} \\
+	MCMC & \textit{Markov Chain Monte Carlo} (chaîne de Markov par Monte Carlo) \\
+	mPFC & Cortex Médial Préfrontal \\
+	PA & tâche de Pointage Anticipation \\
+	PS & tâche de Pointage Simple \\
+	PSIS-LOO & \textit{Pareto Smoothed Importance Sampling} \\
+	QI & Quotient Intellectuel \\
+	RHS & \textit{Regularized HorseShoe} \\
+	SPARC & \textit{SPectral ARC lenght} \\
+	TD & Développement Typique \\
+	TDAH & Trouble de Déficit de l'Attention avec ou sans Hyperactivité \\
+	TSA & Trouble du Spectre Autistique \\
+	VBM & \textit{Voxel-Based Morphometry} (Morphométrie Voxel-à-Voxel) \\
+	$\bm{\widehat{SE}}$ & estimateur d'Erreur Standard \\
+\end{tabular}
+
+
+\newpage
 
 % Tables des illustrations
 %\chapter*{Tables des illustrations}
@@ -145,9 +176,14 @@ Je soussigné, Romain MARTINIE, atteste sur l'honneur de ne pas avoir eu recours
 \listoftables
 \endgroup
 
-%\chapter*{Table des annexes}
-%\begin{itemize}[label={},leftmargin=1.5em]
-%\end{itemize}
+\chapter*{Table des annexes}
+\begin{itemize}[label={},leftmargin=1.5em]
+	\item \hyperref[table:annexe_description_var]{Annexe A : Description de l’ensemble des variables}
+	\item \hyperref[fig:ppc]{Annexe B : \textit{Prior} et \textit{Posterior Predictive checks}}
+	\item \hyperref[fig:stab_ref]{Annexe C. Stabilité de sélection des variables par \textit{fold} à partir du modèle de référence global}
+	\item \hyperref[fig:stab_PA]{Annexe D. Stabilité de sélection des variables par \textit{fold} à partir du modèle de référence PA}
+	\item \hyperref[fig:acp]{Annexe E. Représentation des deux composantes principales issues de l'ACP réalisée sur les 4 variables sélectionnées pour les sujet TSA}
+\end{itemize}
 %\newpage
 
 
@@ -198,11 +234,24 @@ Ce mémoire s'inscrit dans la continuité des travaux réalisés dans le cadre d
 
 \input{resultats}
 
-%\input{discussion}
+\input{discussion}
 
 % Conclusion
 \chapter{Conclusion}
+%Résumé bref
+%+ réponse à la problématique
+%+ suggérer que pour de futurs travaux, l'utilisation de priors + informatifs (basés sur les résultats) permettrait de réduire davantage l'incertitude sur les tailles d'effet qui reste actuellement élevée
 
+
+Ce mémoire visait à identifier, parmi un ensemble large de variables de motricité fine, les marqueurs les plus caractéristiques des enfants avec TSA, à l'aide d'une une de sélection par projection prédictive. Les trois hypothèses formulées reçoivent un soutien empirique convergent.
+
+\medskip 
+
+Le modèle complet atteint une \textit{accuracy} de 0.700, confirmant la faisabilité de la classification à partir de variables de motricité fine seules. La décomposition par tâche a permis d'identifier la tâche PA comme la plus discriminante, et la sélection finale retient deux variables complémentaires et parcimonieuses : \texttt{L2\_large}, qui peut être interprété comme un indice d'hypométrie du geste de pointage, et \texttt{Sparc\_small}, indice de fluidité sous contrainte de précision. Ces deux variables sont cohérentes avec les corrélats neurophysiologiques décrits dans la littérature, notamment les anomalies du cervelet et des ganglions de la base. On peut alors interpréter ces résultat comme la moindre efficacité du contrôle en \textit{feedforward} comme la différence la plus caractéristique du TSA d'un point de vue moteur. Enfin, l'absence de profils moteurs discrets au sein du groupe TSA suggère que la variabilité intragroupe forme un spectre continu, dont l'une des extrémités se confond avec la distribution du groupe neurotypique, ce qui éclaire en partie les limites de toute approche classificatoire fondée sur la motricité seule.
+
+\bigskip 
+
+Ces résultats sont exploratoires et appellent plusieurs prolongements. Une validation externe sur un échantillon indépendant et plus large est nécessaire pour confirmer la robustesse des variables identifiées. Sur le plan méthodologique, l'utilisation de \textit{priors} informatifs fondés sur les estimations obtenues ici permettrait, dans de futures études, de réduire l'incertitude actuellement élevée sur les tailles d'effet. Enfin, l'intégration de \texttt{L2\_large} et \texttt{Sparc\_small} dans un modèle multimodal constituerait une piste pour le développement d'outils de caractérisation complémentaires au diagnostic clinique actuel.
 
 \newpage
 % Bibliographie

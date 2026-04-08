@@ -1,62 +1,238 @@
 \chapter{Discussion}
 
-
-la convergence des résultats entre le modèle PA et le modèle global malgré l'incertitude de ce dernier constitue un élément de validation indirecte de l'approche par décomposition
-
-
- Modèle complet (144 vars) → ELPD trop incertain pour conclure, mais tendance à 
- 2-7 variables stable en sensibilité → justifie de décomposer par tâche → T1 domine
- les autres tâches au sens |elpd\_diff| > se\_diff → cv\_varsel sur T1 → 2 variables 
- (L2\_large, Sparc\_small) capturent l'essentiel avec elpd.diff = 2.45, se = 0.83 pour
- la taille 2 vs taille 3, ce qui est le seuil opti
- Dans cet échantillon, L2\_large et Sparc\_small constituent le sous-ensemble le plus 
- parcimonieux identifié par la sélection projective sur la tâche T1, avec une performance
- prédictive non distinguable du modèle de référence complet. La stabilité de leur sélection
- (cv\_proportions ~ 0.99) renforce leur statut de variables candidates pour des études 
- futures, sans pour autant permettre une inférence causale oun <- 94
- à la population TSA. + anticipation pointage
- Si Sparc\_small bien, Sparc\_large presque aussi bien, mais redondant donc non sélectionné
- Pour autant, L2\_large largement supérieur à L2\_small qui ne capture pas d'information
+%Rappeler brièvement la démarche en deux temps (modèle global → décomposition par tâche → sélection sur PA) et annoncer que la discussion suit cette logique : d'abord la convergence méthodologique, puis l'interprétation des variables, puis les apports de l'approche, puis les limites. ? 
 
 
+\section{Convergence des résultats, PA comme tâche la plus discriminante}
 
- intention au départ : visiblement on tend à dire que PA suffirait 
- + accent sur 2 variables, une liée à cible petite et une cible large
- spectre + tout les domaines enfants pas forcément différents
- enfants peut être en difficulté sur certaines tâches pour les uns, d'autres pour d'autres
- %kmeans ? -> si clusterisation similaire imposée PCA/kmeans ?
+La cohérence entre les trois niveaux d'analyse constitue une forme de validation interne de la démarche par décomposition. Le modèle global, bien qu'il produise une sélection stable aux \textit{fold} et au prior, présentait une incertitude élevée sur les différences d'elpd. Le critère strict basé sur l'erreur standard n'étant pas satisfait, il ne pouvait suffire seul à déterminer $k_\text{opt}$. Le screening par tâche a permis de montrer que la tâche PA est la seule équivalente au modèle complet sur la capacité prédictive. Ce résultat a motivé la sélection finale sur PA. Or les deux variables retenues par cette sélection, \texttt{L2\_Large} et \texttt{Sparc\_small}, correspondent aux deux premières variables identifiées par le modèle global, et leur proportion de sélection en validation croisée avoisine 0.99 dans les deux analyses. Cette convergence n'était pas garantie, d'autant plus que l'analyse à partir de la tache PA était elle aussi stable au prior. Cela renforce donc la confiance dans les analyses. Sur le plan prédictif, l'\textit{accuracy} de 0.700 atteint la borne inférieure de l'objectif fixé à 70–90\,\%. Enfin, la non-sélection de l'âge et du sexe n'est pas un résultat négatif. En effet, le jeu de données étant équilibré par construction sur ces deux variables, leur absence d'effet constitue plutôt un témoin négatif attendu, contrairement à ce qu'on observerait dans la population générale TSA où le ratio est d'environ 4 garçons pour une fille \parencite{zeidan_global_2022}.
 
+\medskip
 
+Les variables issues des tâches Epow, ll\_ln et PS n'ont pas été retenues, ce qui suggère que ces tâches mobilisent des processus moins sensibles aux altérations motrices caractéristiques des TSA dans cet échantillon, ou qu'elles capturent des dimensions redondantes avec celles déjà indexées par la tâche PA. Ainsi, une hypothèse serait que la composante anticipatoire constitue une différence discriminante. Pour autant, les variables sélectionnées, \texttt{L2\_Large} et \texttt{Sparc\_small}, sont des paramètres du mouvement d'atteinte vers la seconde cible, sans lien direct apparent avec la phase d'anticipation de la tâche %(c'est ce qu'on s'est dit, pourtant, on peut supposer que le 2e tracé est anticipé après le premier qui est aléatoire non ?? Il n'y a pas d'incertitude sur la localisation de la 2nd cible, donc le sujet peut justement anticiper non ?)
+(pour autant, pas de sélection de variable du temps de pause entre Point 1 et 2 -> quelle variable qui code ça déjà ? j'ai pas le nom). La tâche PA semble donc discriminante non pas grâce à sa composante anticipatoire, mais via les caractéristiques cinématiques du mouvement lui-même. La question de savoir pourquoi la tâche PS est moins discriminant reste ouverte. S'agit-il de l'absence d'enchaînement d'actions motrices (seulement 1 pointage à la fois contrairement à PA), ou d'une autre propriété de la tâche PA ? mériterait d'être examinée dans des études futures avec un protocole conçu pour dissocier ces facteurs.
+	
+%À l'inverse, les variables issues des tâches Epow, ll\_ln et PS n'ont pas été retenues, ce qui suggère que ces tâches mobilisent des processus moins sensibles aux altérations motrices caractéristiques des TSA dans cet échantillon, ou qu'elles capturent des dimensions redondantes avec celles déjà indexées par la tâche PA. Par ailleurs, les composantes anticipatoires de la tâche PA elle-même ne semblent pas constituer la source principale d'information discriminante : \texttt{L2\_large} correspond au mouvement d'atteinte vers la deuxième cible, dont la localisation est connue à l'avance et ne comporte donc pas d'incertitude. La différence observée entre groupes sembler ainsi relever du mouvement de pointage lui-même plutôt que de la capacité à anticiper.
 
-on a identifié des biomarqueurs moteurs de façon certaine, en éliminant bruit et redondance, mais modéré dans leur capacité à prédire quoi 
- 
- 
-Age et sexe pas informatives : c'est normal !! puisque jeu de données équilibré, contrairement à la population général 
 
 \section{Interprétation des variables sélectionnées}
-Résultat principal 
-L2 large + sparc small -> augmentation de la variable diminue proba de prédire TSA. Rapporter en odd ratio pour interprétation.
-Sparc\_small/L2large : qu'est-ce qu'elles traduisent de différent
-Fluidité : à quoi associé en terme de controles smoothness motor control...
-Idem pour longueur de tâche
-bioméca + intégrationsenso visuo/motrice
+Les deux variables retenues à l'issue de la sélection sur la tâche PA, \texttt{L2\_large} et \texttt{Sparc\_small}, présentent toutes deux des coefficients négatifs : une valeur plus élevée de chacune est associée à une probabilité moindre d'appartenir au groupe TSA. En d'autres termes, c'est la diminution de la distance parcourue et de la fluidité du mouvement qui caractérise les enfants TSA dans cet échantillon.
+% (OR\textsubscript{L2\_large} = 0.41 ; IC\,95\,\% [0.22\,;\,0.92]), soit une réduction de 59\,\% de la cote d'appartenance au groupe TSA par écart-type supplémentaire ; OR\textsubscript{Sparc\_small} = 0.60 (IC\,95\,\% [0.31\,;\,0.97]), soit une réduction de 40\,\%. %L'effet de \texttt{L2\_large} apparaît ainsi plus marqué que celui de \texttt{Sparc\_small}, bien que les intervalles de crédibilité soient larges, ce qui invite à la prudence quant à toute comparaison directe de leurs tailles d'effet.
 
-L2\_large distance plus courte, lien parkinson etc
+\medskip
 
-Tâche PA  
+\texttt{L2\_large} correspond à la longueur du tracé parcouru lors du deuxième mouvement de pointage, du premier au deuxième point d'arrivée, en condition cible large. \texttt{Sparc\_small} correspond à l'indice SPARC calculé sur ce même segment de mouvement, mais en condition cible petite. Ces deux variables indexent donc des dimensions distinctes du contrôle moteur. L'une capture la dimension spatiale, l'autre la dimensions temporelle (spectrale) du profil de vitesse. La sélection par projection prédictive confirme leur complémentarité : chacune apporte une contribution prédictive non redondante avec l'autre.
 
-Résultat secondaire
-On peut regarde les variables sparc2 et pT2Pv6 du modèle réduit à partir du modèle de référence global, car stabilité ++ même si incertitude sur l'information que ça apporte. Rapporter en odd ratio pour interprétation.
+\medskip
+
+Conformément aux hypothèses formulées, \texttt{Sparc\_small} s'inscrit dans le cadre d'un déficit de fluidité sous contrainte de précision. \texttt{L2\_large}, en revanche, constitue un résultat plus inattendu. La diminution de la longueur de trajectoire en condition facile oriente l'interprétation vers une hypokinésie du mouvement plutôt que vers un déficit de guidage terminal. Ces deux pistes sont développées dans les sous-sections suivantes.
+
+%Ces deux variables renvoient à des dimensions complémentaires du contrôle moteur. \texttt{L2\_large} indexe la dimension spatiale,  stratégie de trajectoire, potentiellement feedforward planning. \texttt{Sparc\_small} indexe la dimension temporelle (spectrale). fluidité, potentiellement contrôle cérébelleux. D'après projpred on sait que ces deux dimensions sont complémentaires et non redondantes (chacune apporte de l'information propre). Lien avec les corrélats neurophysiologiques hypothétisés : cervelet (fluidité), ganglions de la base (séquençage, amplitude) -> lien avec littérature et RDL + cohérent avec hypothèses formulées.
+%
+%
+%L2 large -> hors hypothèses formulées
+%Sparc small -> dans hypothèses
+%Pas d'accélération -> hors hypothèses
 
 
+\subsection{Hypokinésie du mouvement et planification en \textit{feedforward}}
 
-Si accuracy modérée, c'est parce que bcp de sujet sont entre 2 -> correspond avec l'idée de spectre. Il y a des cas extrêmes qu'on classifie très bien, uniquement sur les marqueurs moteurs. 
+La réduction de distance indexée par \texttt{L2\_large} ne s'accompagne  pas d'une modification de la courbure de trajectoire : les valeurs descriptives de l'indice de courbure (\textit{curve index}) sont comparables entre les deux groupes (valeurs à insérer : M ± SD groupe TSA vs TD). Cela exclut une rigidité de trajectoire au sens strict. Si la distance est plus courte mais que la forme relative de la courbe est préservée, alors les enfants TSA produisent des trajectoires proportionnellement similaires mais d'amplitude absolue réduite. Cela est alors cohérent avec une hypokinésie du mouvement de pointage, c'est-à-dire une sous-amplitude de la phase balistique, comme déjà observé dans la littérature %\parencite{glazebrook_2006,minshew_2004}. % à vérifier
 
-Ce qui semble prédire : fluidité, donc plutôt sur des mouvement en feedforward et long (parce que peut être que quand TSA ils le font justement moins en feedforward). Et distance quand accuracy peu importante. Les composantes d'anticipation ne semble pas amener de l'information ?
-(lien avec la littérature sur la motricité fine et le TSA)
-\section{Apport de l'approche bayésienne}
-(par rapport à une régression classique)
+
+L'absence de sélection de \texttt{L2\_small} est elle-même informative. La condition cible petite est susceptible de masquer les différences d'amplitude de mouvement. Ce résultat est cohérent avec un déficit du contrôle en \textit{feedforward} : si la différence provenait d'un déficit de correction par \textit{feedback}, on s'attendrait à ce que ce soit précisément la condition exigeant la plus grande précision qui révèle le plus de différences entre groupes. L'observation inverse semble donc être cohérente avec une altération de la planification motrice initiale.
+
+De plus, on sait que les ganglions de la base interviennent dans la planification mouvement\break\parencite{Desmurget2004May}. Aussi, dans la maladie de Parkinson, la physiopathologie repose sur un dysfonctionnement de ces structures et l'hypokinésie du geste de pointage est souvent retrouvé dans la littérature \parencite{Mazzoni2012Mar}, ce qui oblige les patients à produire des ajustements par \textit{feedback} successifs pour atteindre la cible. Or, des anomalies des ganglions de la base sont documentées dans les TSA \parencite{McAlonan2009Nov}. % + RDL ?
+L'hypokinésie observée ici pourrait donc refléter une atteinte partielle des mécanismes planification dépendants des ganglions de la base, sans pour autant atteindre le tableau clinique complet décrit dans les pathologies avérées de ces structures.
+
+%Les enfants TSA produisent des trajectoires plus courtes/rectilignes que les TD en condition cible large → rigidité de la stratégie de transport, indépendante de la précision terminale.
+%
+%Ce que mesure L2\_large : distance parcourue du 1er au 2e segment, condition large → indicateur de la longueur/courbure de la trajectoire de transport, pas de la précision finale
+%
+%Direction de l'effet : coefficient négatif → TSA ont des L2\_large plus faibles → trajectoires plus rectilignes/plus courtes
+%
+%Mais PAS de différence de curve index entre TSA et non TSA (justifier avec juste stat descriptive) -> uniquement distance plus courte
+%
+%Donc  si l'indice de courbure est similaire mais que L2 est plus petit, alors les TSA font des trajectoires proportionnellement aussi courbes que les NT mais plus courtes en distance absolue — ce qui pointe vers une hypokinésie (sous-amplitude du mouvement) plutôt que vers une rigidité de trajectoire au sens strict -> + sources dire que c'est ce qu'on retrouve souvent.
+%
+%Dissociation L2\_large / L2\_small : L2\_large informatif, L2\_small ne l'est pas → probablement que le fait que la cible soit large augmente les différences visibles par hypokinésie 
+%
+%Lien avec le modèle à deux phases : phase balistique (feedforward, planification) vs phase de guidage terminal (feedback, précision) — Elliott et al., 2010 à vérifier ??
+%
+%En condition large, la phase terminale est peu contrainte → ce qui est capturé, c'est presque exclusivement la phase de transport → différence TSA/NT localisée dans la planification, pas dans la correction en ligne
+%En effet si Si déficit de correction on aurait eu L2small qui ressortirait plus. Donc feedforward et pas feedback ?
+
+%Lien hypokinésie/rigidité dans les TSA : Glazebrook et al., 2006 ; Minshew et al., 2004 à vérifier
+
+
+\subsection{Déficit de fluidité sous contrainte de précision et rôle du cervelet}
+
+%Ce que mesure SPARC : spectral arc length → plus la valeur est proche de 0 (moins négative), plus le mouvement est fluide. Coefficient négatif → valeur plus élevée (= plus fluide) associée aux TD.
+%
+%Les enfants TSA produisent des mouvements moins fluides que les TD, et cette différence est surtout visible sous contrainte de précision → cohérent avec un déficit des modèles internes prédictifs plutôt qu'un déficit moteur brut.
+
+La non-sélection de \texttt{Sparc\_large} par la projection prédictive est ici informative. Elle ne signifie pas que la fluidité est forcément identique entre groupes en condition large, mais que c'est la condition exigeant la plus grande précision qui concentre l'information discriminante. Un déficit moteur brut, affectant uniformément la production du mouvement, devrait se manifester indépendamment de la contrainte de précision. À l'inverse, un déficit des modèles internes prédictifs ne deviendrait pleinement visible que lorsque la tâche impose une demande de précision importante.%, c'est-à-dire lorsque la planification en \textit{feedforward} ne peut plus être compensée par un guidage terminal relâché.
+
+\medskip 
+
+En condition \textit{small}, les enfants TSA semblent contraints de recourir davantage à la correction par \textit{feedbacks} sensoriels pour atteindre la cible, ce qui se traduirait par des ajustements successifs et donc des discontinuités dans le profil de vitesse et un SPARC plus bas. De façon analogue, on retrouve chez les sujets TSA des anomalies du cervelet et ganglions de la base \parencite{McAlonan2009Nov, Guo2024Apr} et leurs conséquences comportementales attendues sont une perturbation du contrôle en \textit{feedforward} \parencite{Manto2012Jun} et une moindre fluidité comme retrouvé chez les patients parkinsoniens \parencite{Dounskaia2009Mar}. % en \textit{feedforward} et un recours compensatoire au \textit{feedback}, ce qui est observé ici. + vérifier
+
+%OU on peut aussi interpréter + lien parkinson et ganglions base moindre fluidité
+%
+%Pris ensemble, les résultats relatifs à \texttt{L2\_large} et à \texttt{Sparc\_small} convergent donc vers une interprétation similaire. Il apparait vraisemblable de penser que c'est l'efficacité du contrôle en \textit{feedforward} qui constitue la dimension la plus discriminante de la motricité fine dans cet échantillon. et lien aux structures sous corticales
+
+\medskip 
+
+Ainsi, les résultats relatifs à \texttt{L2\_large} et à \texttt{Sparc\_small} convergent donc vers une interprétation similaire. L'hypokinésie du geste de pointage et le déficit de fluidité sous contrainte de précision pointent tous deux vers une moindre efficacité du contrôle en \textit{feedforward}. De plus, le réseau sous-cortical (notamment cervelet et ganglions de la base) est documenté comme altéré chez les sujets TSA, de manière moins marquée que chez les patients parkinsoniens, chez qui on retrouve des troubles moteurs similaires mais plus sévères. En conclusion, ces deux dimensions semblent complémentaires, non redondantes et parcimonieuses pour caractériser les sujets TSA.
+%
+%En effet : Dissociation Sparc\_small / Sparc\_large : Sparc\_large non retenu par projpred → la fluidité est globalement différente entre groupes, mais la condition exigeante en précision est plus discriminante
+%Interprétation : en condition small, la tâche impose demande accuracy ++ → les TSA, moins capables de produire un mouvement fluide en feedforward, doivent davantage corriger → discontinuités dans le profil de vitesse → SPARC plus bas 
+%C'est seulement quand la tâche exige un contrôle fin que le déficit des modèles internes devient visible → cohérent avec une hypothèse de déficit prédictif plutôt que déficit moteur brut
+%
+%
+%Cervelet = modèles internes = prédiction du mouvement et lissage des trajectoires → Wolpert, Miall \& Kawato, 1998 ; Bastian, 2006 à vérifier
+%Anomalies cérébelleuses bien documentées dans les TSA → Fatemi et al., 2012 ; Mosconi et al., 2015 à vérifier
+%Conséquence : moindre lissage feedforward → recours accru au feedback → mouvements segmentés/moins fluides
+%
+%-> Deux résultats pointent vers témoin du controle en feedforward moins efficace comme le + informatif sur la motricité fine ?
+
+%\subsection{Résultat secondaire et hétérogénéité du spectre}
+
+\subsection{Variables secondaires (Sparc et \textit{Time to Peak})}
+
+Les deux variables supplémentaires issues du modèle global présentent aussi des proportions de sélection élevées : \texttt{Sparc2} (0.97) et \texttt{pT2Pv6} (0.93), sans être retenues lors de la sélection conduite sur la tâche PA. Elles sont en effet issues de tâches distinctes, respectivement Epow et PS, et leur statut est celui de pistes secondaires : leur stabilité en sélection justifie qu'elles soient mentionnées, mais l'incertitude sur les différences d'elpd du modèle global ne permet pas de leur accorder le même poids qu'à \texttt{L2\_large} et \texttt{Sparc\_small}. % plus succint l'intro
+
+\medskip 
+
+\texttt{Sparc2} correspond à l'indice SPARC calculé sur la tâche Epow. Sa sélection répétée est cohérente avec \texttt{Sparc\_small} : la fluidité du mouvement se retrouve discriminant dans une tâche différente, ce qui suggère que le déficit de lissage \textit{feedforward} n'est pas spécifique à la tâche PA. Néanmoins, la sélection par projection prédictive n'étant pas censée sélectionner des variables redondantes, on peut se demander quelle information nouvelle apporterait la fluidité lors de la tâche Epow par rapport à celle rapportée par \texttt{Sparc\_small} dans la tâche PA.
+
+\medskip 
+
+Enfin, \texttt{pT2Pv6} correspond au temps au pic de vitesse mesuré sur la tâche PS à l'indice de difficulté le plus élevé ($\text{ID} = 6$). Ainsi, un temps au pic précoce reflète une impulsion initiale brève, tandis qu'un pic tardif traduit une accélération plus progressive. Dans cet échantillon, l'effet de \texttt{pT2Pv6} traduit un \textit{time to peak} plus tard chez les enfants TSA, ce qui est cohérent avec l'interprétation d'hypokinésie évoquée plus tôt. De plus, la sélection de \texttt{pT2Pv6} à l'indice de difficulté le plus élevé est par ailleurs cohérente avec l'idée que les contraintes de précision amplifieraient les déficits de planification.
+%
+%Stables en sélection sur le modèle global (0.97 et 0.93) mais non retenus sur PA → variables issues d'autres tâches (Epow, PS).
+%Discuter brièvement leur sens : Sparc2 (fluidité Epow, 2 pour 2e eu le plus petit) → cohérent avec Sparc\_small, même construit mesuré dans une autre tâche. pT2Pv6 (time to peak PS, ID=6) → dimension temporelle de l'accélération ( lien possible avec le séquençage moteur / ganglions de la base?).
+%Ces résultats secondaires méritent d'être mentionnés comme pistes, sans leur accorder le même poids qu'à L2\_large et Sparc\_small. Statut : pistes secondaires, pas de conclusion ferme possible avec n=90 et incertitude elpd sur le modèle global
+
+\section{Performance prédictive et hétérogénéité du spectre}
+
+L'\textit{accuracy} du modèle réduit final était de 0.700, résultat modéré mais cohérent avec la nature continue du spectre autistique. En effet, certains enfants TSA présentent des altérations motrices marquées, d'autres non \parencite{hocking_what_2017}. Néanmoins, les cas extrêmes sont bien classifiés. La superposition dans l'espace des \textit{features} sélectionnées correspond aux profils intermédiaires (voir figure~\ref{fig:espace_sel}). Cela souligne que les marqueurs de motricité fine ne sauraient suffire seuls à un diagnostic, mais pourraient être complémentaires à d'autres outils.
+
+\medskip 
+
+De plus, une analyse en composantes principales (ACP) à titre exploratoire, a été conduite sur les quatre variables sélectionnées, restreinte au groupe TSA. L'ACP confirme l'absence de sous-groupes discrets (voir Annexe~\ref{fig:acp}). Les deux premières composantes n'expliquent que 57.4\,\% de la variance totale et la distribution des individus dans l'espace ne révèle pas de structure en clusters mais plutôt un étalement continu. Ce résultat suggère qu'il n'existe pas de profils moteurs distincts au sein du groupe TSA. La variabilité semble former un spectre dont l'une des extrémités se confond progressivement avec la distribution du groupe TD.
+
+\medskip 
+
+Les erreurs de classification ne constituent pas pour autant un échec prédictif au regard de la littérature. Avec seulement deux variables de motricité fine, le modèle atteint une \textit{accuracy} comparable ou légèrement inférieure à celle rapportée dans certaines études utilisant davantage de \textit{features} et des approches non linéaires (voir section~\ref{sec:classification}).% De plus, la performance est estimée ici par LOO-CV, ce qui limite le sur-apprentissage et donc un optimise quant à l'\textit{accuracy}.
+Un modèle non linéaire aurait probablement pu améliorer la capacité prédictive du modèle, mais au prix de la parcimonie et de l'interprétabilité, qui constituaient les objectifs premiers du mémoire. Ainsi, une perspective intéressante consisterait à développer un modèle non linéaire intégrant les variables sélectionnées, combinées à d’autres types de mesures (par exemple la motricité globale), afin d’atteindre des performances potentiellement plus élevées.
+
+%
+%Accuracy de 0.700 → 25 erreurs sur 90 obs. Cohérent avec la notion de spectre : certains enfants TSA sont peu différenciés des NT sur le plan moteur, d'autres le sont fortement. Les cas extrêmes sont bien classifiés ; l'overlap correspond aux profils intermédiaires. Cela souligne que les marqueurs de motricité fine ne sauraient suffire à un diagnostic, mais pourraient être complémentaires d'autres outils.
+%Lien avec l'idée que certains enfants TSA n'ont pas de trouble moteur apparent (+ source), ou que certains NT peuvent avoir des caractéristiques motrices proches des TSA (+ source ?).
+%+ Il ne semble pas qu'il y ait vraiment de profils moteurs au sein du groupe TSA, seulement un spectre continue qui dans son extrémité se confond avec le groupe TD. (en vrai pas besoin de kmeans ça se voit) -> ACP sur le groupe TSA avec les 4 variables selectionnées, on dirait plutôt une mixture de gaussiennes, avec une variance expliquée très faible (fonction linéaire et non log)
+%+ avec modèle plus sophistiqué type non linéaire on aurait probablement pu faire mieux d'un pdv prédiction pure, mais pas l'obj ici
+%Pour autant Se saucer : malgré grand nombre de variable et incertitude propagée, avec 2 variables on arrive à prédire aussi bien que certains articles + sources et un peu moins que d'autres + source. Avec une LOO CV qui semble plutôt fiable. 
+%
+
+%\section{Apport de l'approche bayésienne}
+%
+%La régression bayésienne avec prior RHS a permis une régularisation dans un contexte de haute dimension (144 variables, 90 observations). Ici, une régression logistique classique aurait été instable et une sélection par seuil de $p$-value aurait exposé à une inflation du taux d'erreur de type~I et une réduction de la puissance statistique après correction. 
+%
+%La sélection de variables par projection prédictive se base sur le pouvoir prédictif et non sur la significativité individuelle des coefficients pour réduire le nombre de \textit{features}. Ce qui évite la sélection de variables redondantes en termes prédictifs.
+%
+%
+%L'incertitude est explicitement quantifiée : les IC à 95 \% et les probabilités de direction permettent de distinguer incertitude sur le signe et incertitude sur la taille des effets — une nuance absente des approches fréquentistes classiques.
+%La validation croisée LOO (PSIS-LOO) donne une estimation honnête de la performance prédictive en dehors de l'échantillon, sans suroptimisme.
+%Comparer brièvement : une régression logistique classique + sélection par AIC/BIC ou LASSO n'aurait pas offert la même quantification de l'incertitude ni la même robustesse à la haute dimensionnalité avec n faible.
+%tests multiples implicites qu'une approche fréquentiste classique n'aurait pas géré proprement avec 144 variables. Le prior horseshoe remplace une correction de Bonferroni tout en préservant la puissance sur les vrais effets.
 \section{Limites}
-(taille d'échantillon, na.omit, généralisabilité, k pareto sur modèle réduit à partir ref globale, incertitude)
+
+Certaines limites doivent être signalées. La principale limite est la taille d'échantillon ($n = 90$), qui contraint à la fois le pouvoir prédictif et la précision des estimations. L'incertitude représentée par les intervalles de crédibilité larges sur les coefficients en sont la conséquence directe. La probabilité de direction est forte pour les deux variables retenues, mais la taille d'effet des coefficients reste très incertaine. Les résultats sont donc à considérer comme exploratoires et appellent une confirmation sur des échantillons plus larges.
+
+\medskip 
+
+De plus, l'estimation de la performance prédictive du modèle est à interpréter avec prudence. En effet, la fiabilité de l'approximation PSIS-LOO est variable selon le modèle considéré. Dans le modèle global, environ 10\,\% des observations présentent des valeurs $\hat{k} > 0.7$. Néanmoins, le modèle issu de la tâche PA n'est pas concerné par cette limite.
+
+\medskip 
+
+La généralisabilité des résultats est également à nuancer. L'échantillon est clinique et équilibré artificiellement sur le sexe et l'âge, si bien que les performances prédictives obtenues ne se transposent pas directement à la population TSA. De même, l'absence de validation externe sur un échantillon indépendant ne permet pas de conclure à la robustesse des variables sélectionnées au-delà du jeu de données concerné. La double validation croisée LOO atténue cette limite sans pour autant l'éliminer. \texttt{L2\_large} et \texttt{Sparc\_small} sont donc des variables candidates pour de futures études, non des biomarqueurs validés.
+
+\medskip 
+
+Enfin, l'espace de variables est contraint par le protocole expérimental. D'autres tâches de motricité fine, impliquant par exemple la coordination bimanuelle, ou des séquences plus complexes, auraient pu capturer des variables discriminantes non indexées ici. Cette limite est toutefois relative. Le protocole couvre plusieurs tâches et un nombre important de variables, il aurait été compliqué d'augmenter le nombre de celles-ci sans augmenter la taille de l'échantillon.
+
+%
+%\section{Limites}
+%Taille d'échantillon (n=90) : limite le pouvoir prédictif et la précision des estimations. Les IC larges sur les tailles d'effet en sont la conséquence directe. Les résultats sont à considérer comme exploratoires et à confirmer sur des échantillons plus larges.
+%%Gestion des données manquantes (na.omit) : la suppression listwise peut introduire un biais de sélection si les données ne sont pas manquantes complètement au hasard (MCAR). Une imputation multiple aurait été plus robuste — à discuter brièvement.
+%k de Pareto > 0.7 (modèle global) : ~10 \% des observations posent problème pour l'approximation PSIS-LOO du modèle global, ce qui nuance la fiabilité des elpd estimés dans cette étape. Le modèle PA est exempt de ce problème, ce qui renforce sa préférence.
+%Généralisabilité : échantillon clinique de convenance, équilibré artificiellement → les performances prédictives ne se généralisent pas directement à la population clinique avec le sex-ratio et la distribution d'âge naturels.
+%Incertitude sur les tailles d'effet : les coefficients ont des IC larges qui englobent des effets pratiquement nuls. La probabilité de direction est forte, mais la taille des effets reste très incertaine — les résultats ne permettent pas de conclure sur l'ampleur des différences motrices entre groupes.
+%Nature exploratoire : pas d'inférence causale possible, pas de validation externe. L2\_large et Sparc\_small sont des variables candidates pour de futures études, pas des biomarqueurs validés.
+%Choix des tâches et variables : l'espace de variables est contraint par les tâches proposées. D'autres tâches ou d'autres mesures pourraient capturer des dimensions non explorées ici, même si d'un pdv motricité fine on a ratissé large quand meme, un peu une qualité du mémoire.
 
 
+% Fournier et al. (2010) ? qui montrent que le profil moteur varie considérablement selon les individus dans le spectre. L'idée que certains enfants TSA n'ont pas de profil moteur distinct des NT est bien documentée et étaye ton interprétation.
+
+%
+%
+%
+%
+% Modèle complet (144 vars) → ELPD trop incertain pour conclure, mais tendance à 
+% 2-7 variables stable en sensibilité → justifie de décomposer par tâche → T1 domine
+% les autres tâches au sens |elpd\_diff| > se\_diff → cv\_varsel sur T1 → 2 variables 
+% (L2\_large, Sparc\_small) capturent l'essentiel avec elpd.diff = 2.45, se = 0.83 pour
+% la taille 2 vs taille 3, ce qui est le seuil opti
+% Dans cet échantillon, L2\_large et Sparc\_small constituent le sous-ensemble le plus 
+% parcimonieux identifié par la sélection projective sur la tâche T1, avec une performance
+% prédictive non distinguable du modèle de référence complet. La stabilité de leur sélection
+% (cv\_proportions ~ 0.99) renforce leur statut de variables candidates pour des études 
+% futures, sans pour autant permettre une inférence causale oun <- 94
+% à la population TSA. + anticipation pointage
+% Si Sparc\_small bien, Sparc\_large presque aussi bien, mais redondant donc non sélectionné
+% Pour autant, L2\_large largement supérieur à L2\_small qui ne capture pas d'information
+%
+%
+%
+% intention au départ : visiblement on tend à dire que PA suffirait 
+% + accent sur 2 variables, une liée à cible petite et une cible large
+% spectre + tout les domaines enfants pas forcément différents
+% enfants peut être en difficulté sur certaines tâches pour les uns, d'autres pour d'autres
+% %kmeans ? -> si clusterisation similaire imposée PCA/kmeans ?
+%
+%
+%
+%on a identifié des biomarqueurs moteurs de façon certaine, en éliminant bruit et redondance, mais modéré dans leur capacité à prédire quoi 
+% 
+% 
+%Age et sexe pas informatives : c'est normal !! puisque jeu de données équilibré, contrairement à la population général 
+%
+%\section{Interprétation des variables sélectionnées}
+%Résultat principal 
+%L2 large + sparc small -> augmentation de la variable diminue proba de prédire TSA. Rapporter en odd ratio pour interprétation.
+%Sparc\_small/L2large : qu'est-ce qu'elles traduisent de différent
+%Fluidité : à quoi associé en terme de controles smoothness motor control...
+%Idem pour longueur de tâche
+%bioméca + intégrationsenso visuo/motrice
+%
+%L2\_large distance plus courte, lien parkinson etc
+%
+%Tâche PA  
+%
+%Résultat secondaire
+%On peut regarde les variables sparc2 et pT2Pv6 du modèle réduit à partir du modèle de référence global, car stabilité ++ même si incertitude sur l'information que ça apporte. Rapporter en odd ratio pour interprétation.
+%
+%
+%
+%Si accuracy modérée, c'est parce que bcp de sujet sont entre 2 -> correspond avec l'idée de spectre. Il y a des cas extrêmes qu'on classifie très bien, uniquement sur les marqueurs moteurs. 
+%
+%Ce qui semble prédire : fluidité, donc plutôt sur des mouvement en feedforward et long (parce que peut être que quand TSA ils le font justement moins en feedforward). Et distance quand accuracy peu importante. Les composantes d'anticipation ne semble pas amener de l'information ?
+%(lien avec la littérature sur la motricité fine et le TSA)
+%
+%\section{Apport de l'approche bayésienne}
+%(par rapport à une régression classique)
+%\section{Limites}
+%(taille d'échantillon, na.omit, généralisabilité, k pareto sur modèle réduit à partir ref globale, incertitude)
+%
+%
