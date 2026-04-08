@@ -1,7 +1,7 @@
 \chapter{Discussion}
 
-%Rappeler brièvement la démarche en deux temps (modèle global → décomposition par tâche → sélection sur PA) et annoncer que la discussion suit cette logique : d'abord la convergence méthodologique, puis l'interprétation des variables, puis les apports de l'approche, puis les limites. ? 
-
+Rappeler brièvement la démarche en deux temps (modèle global → décomposition par tâche → sélection sur PA) et annoncer que la discussion suit cette logique : d'abord la convergence méthodologique, puis l'interprétation des variables, puis les apports de l'approche, puis les limites. ?  le tout sans gagner de page et en étant archi concis
++ RELIRE LA DISCUSSION
 
 \section{Convergence des résultats, PA comme tâche la plus discriminante}
 
@@ -37,7 +37,7 @@ Conformément aux hypothèses formulées, \texttt{Sparc\_small} s'inscrit dans l
 
 \subsection{Hypokinésie du mouvement et planification en \textit{feedforward}}
 
-La réduction de distance indexée par \texttt{L2\_large} ne s'accompagne  pas d'une modification de la courbure de trajectoire : les valeurs descriptives de l'indice de courbure (\textit{curve index}) sont comparables entre les deux groupes (valeurs à insérer : M ± SD groupe TSA vs TD). Cela exclut une rigidité de trajectoire au sens strict. Si la distance est plus courte mais que la forme relative de la courbe est préservée, alors les enfants TSA produisent des trajectoires proportionnellement similaires mais d'amplitude absolue réduite. Cela est alors cohérent avec une hypokinésie du mouvement de pointage, c'est-à-dire une sous-amplitude de la phase balistique, comme déjà observé dans la littérature %\parencite{glazebrook_2006,minshew_2004}. % à vérifier
+La réduction de distance indexée par \texttt{L2\_large} ne s'accompagne  pas d'une modification de la courbure de trajectoire : les valeurs descriptives de l'indice de courbure (\textit{curve index}) sont comparables entre les deux groupes (TSA : $0.17 \pm 0.06$ vs TD : $0.16 \pm 0.07$). Cela exclut une rigidité de trajectoire au sens strict. Si la distance est plus courte mais que la courbure est similaire, alors les enfants TSA produisent des trajectoires d'amplitude réduite. Cela est alors cohérent avec une hypokinésie, comme déjà observée dans la littérature \parencite{Zhang2025Sep}.
 
 
 L'absence de sélection de \texttt{L2\_small} est elle-même informative. La condition cible petite est susceptible de masquer les différences d'amplitude de mouvement. Ce résultat est cohérent avec un déficit du contrôle en \textit{feedforward} : si la différence provenait d'un déficit de correction par \textit{feedback}, on s'attendrait à ce que ce soit précisément la condition exigeant la plus grande précision qui révèle le plus de différences entre groupes. L'observation inverse semble donc être cohérente avec une altération de la planification motrice initiale.
@@ -73,7 +73,6 @@ L'hypokinésie observée ici pourrait donc refléter une atteinte partielle des 
 
 La non-sélection de \texttt{Sparc\_large} par la projection prédictive est ici informative. Elle ne signifie pas que la fluidité est forcément identique entre groupes en condition large, mais que c'est la condition exigeant la plus grande précision qui concentre l'information discriminante. Un déficit moteur brut, affectant uniformément la production du mouvement, devrait se manifester indépendamment de la contrainte de précision. À l'inverse, un déficit des modèles internes prédictifs ne deviendrait pleinement visible que lorsque la tâche impose une demande de précision importante.%, c'est-à-dire lorsque la planification en \textit{feedforward} ne peut plus être compensée par un guidage terminal relâché.
 
-\medskip 
 
 En condition \textit{small}, les enfants TSA semblent contraints de recourir davantage à la correction par \textit{feedbacks} sensoriels pour atteindre la cible, ce qui se traduirait par des ajustements successifs et donc des discontinuités dans le profil de vitesse et un SPARC plus bas. De façon analogue, on retrouve chez les sujets TSA des anomalies du cervelet et ganglions de la base \parencite{McAlonan2009Nov, Guo2024Apr} et leurs conséquences comportementales attendues sont une perturbation du contrôle en \textit{feedforward} \parencite{Manto2012Jun} et une moindre fluidité comme retrouvé chez les patients parkinsoniens \parencite{Dounskaia2009Mar}. % en \textit{feedforward} et un recours compensatoire au \textit{feedback}, ce qui est observé ici. + vérifier
 
@@ -118,13 +117,12 @@ Enfin, \texttt{pT2Pv6} correspond au temps au pic de vitesse mesuré sur la tâc
 
 L'\textit{accuracy} du modèle réduit final était de 0.700, résultat modéré mais cohérent avec la nature continue du spectre autistique. En effet, certains enfants TSA présentent des altérations motrices marquées, d'autres non \parencite{hocking_what_2017}. Néanmoins, les cas extrêmes sont bien classifiés. La superposition dans l'espace des \textit{features} sélectionnées correspond aux profils intermédiaires (voir figure~\ref{fig:espace_sel}). Cela souligne que les marqueurs de motricité fine ne sauraient suffire seuls à un diagnostic, mais pourraient être complémentaires à d'autres outils.
 
-\medskip 
 
 De plus, une analyse en composantes principales (ACP) à titre exploratoire, a été conduite sur les quatre variables sélectionnées, restreinte au groupe TSA. L'ACP confirme l'absence de sous-groupes discrets (voir Annexe~\ref{fig:acp}). Les deux premières composantes n'expliquent que 57.4\,\% de la variance totale et la distribution des individus dans l'espace ne révèle pas de structure en clusters mais plutôt un étalement continu. Ce résultat suggère qu'il n'existe pas de profils moteurs distincts au sein du groupe TSA. La variabilité semble former un spectre dont l'une des extrémités se confond progressivement avec la distribution du groupe TD.
 
 \medskip 
 
-Les erreurs de classification ne constituent pas pour autant un échec prédictif au regard de la littérature. Avec seulement deux variables de motricité fine, le modèle atteint une \textit{accuracy} comparable ou légèrement inférieure à celle rapportée dans certaines études utilisant davantage de \textit{features} et des approches non linéaires (voir section~\ref{sec:classification}).% De plus, la performance est estimée ici par LOO-CV, ce qui limite le sur-apprentissage et donc un optimise quant à l'\textit{accuracy}.
+Les erreurs de classification ne constituent pas pour autant un échec prédictif au regard de la littérature. Avec seulement deux variables de motricité fine, le modèle atteint une \textit{accuracy} comparable ou légèrement inférieure à celle rapportée dans certaines études utilisant davantage de \textit{features} et des approches non linéaires (voir section~\ref{sec:classification}). % De plus, la performance est estimée ici par LOO-CV, ce qui limite le sur-apprentissage et donc un optimise quant à l'\textit{accuracy}.
 Un modèle non linéaire aurait probablement pu améliorer la capacité prédictive du modèle, mais au prix de la parcimonie et de l'interprétabilité, qui constituaient les objectifs premiers du mémoire. Ainsi, une perspective intéressante consisterait à développer un modèle non linéaire intégrant les variables sélectionnées, combinées à d’autres types de mesures (par exemple la motricité globale), afin d’atteindre des performances potentiellement plus élevées.
 
 %
@@ -150,11 +148,7 @@ Un modèle non linéaire aurait probablement pu améliorer la capacité prédict
 
 Certaines limites doivent être signalées. La principale limite est la taille d'échantillon ($n = 90$), qui contraint à la fois le pouvoir prédictif et la précision des estimations. L'incertitude représentée par les intervalles de crédibilité larges sur les coefficients en sont la conséquence directe. La probabilité de direction est forte pour les deux variables retenues, mais la taille d'effet des coefficients reste très incertaine. Les résultats sont donc à considérer comme exploratoires et appellent une confirmation sur des échantillons plus larges.
 
-\medskip 
-
 De plus, l'estimation de la performance prédictive du modèle est à interpréter avec prudence. En effet, la fiabilité de l'approximation PSIS-LOO est variable selon le modèle considéré. Dans le modèle global, environ 10\,\% des observations présentent des valeurs $\hat{k} > 0.7$. Néanmoins, le modèle issu de la tâche PA n'est pas concerné par cette limite.
-
-\medskip 
 
 La généralisabilité des résultats est également à nuancer. L'échantillon est clinique et équilibré artificiellement sur le sexe et l'âge, si bien que les performances prédictives obtenues ne se transposent pas directement à la population TSA. De même, l'absence de validation externe sur un échantillon indépendant ne permet pas de conclure à la robustesse des variables sélectionnées au-delà du jeu de données concerné. La double validation croisée LOO atténue cette limite sans pour autant l'éliminer. \texttt{L2\_large} et \texttt{Sparc\_small} sont donc des variables candidates pour de futures études, non des biomarqueurs validés.
 
