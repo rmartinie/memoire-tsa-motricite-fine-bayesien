@@ -30,7 +30,7 @@ La tâche d'anticipation pointage (PA) consistait à pointer successivement deux
 
 \subsubsection{Anticipation écriture}
 
-La tâche d'anticipation écriture (ll\_ln) consistait à recopier avec le stylet et par-dessus un modèle, deux digrammes (\textit{ll} et \textit{ln}) présentés en écriture cursive, sans espace entre les deux lettres (voir figure~\ref{fig:ll_ln}).
+La tâche d'anticipation écriture (ll\_ln) consistait à recopier avec le stylet et par-dessus un modèle, deux digrammes (\textit{ll} et \textit{ln}) présentés en écriture cursive, sans espace entre les deux lettres (voir figure~\ref{fig:ll_ln}). On parle d'anticipation car le sujet devait planifier son geste d’écriture en fonction de la lettre suivante (\textit{l} ou \textit{n}) avant d’avoir terminé la première. 
 
 \begin{figure}[ht]
 	\centering
@@ -53,15 +53,13 @@ Pour la tâche d'isochronie (Epow), le participant devait recopier, avec le styl
 
 \subsubsection{Pointage simple}
 
-La tâche de Pointage Simple (PS) correspondait à une tâche de Fitts. Le participant devait pointer une cible avec le stylet dès son apparition, le plus rapidement possible et sans lever le stylet, en partant d'un carré de 0,5~cm de côté. Quatre niveaux de difficulté ont été définis par l'indice de difficulté ID, calculé selon la formule suivante :
+La tâche de Pointage Simple (PS) correspondait à une tâche de Fitts \parencite{Fitts1954}. Le participant devait pointer une cible avec le stylet dès son apparition, le plus rapidement possible et sans lever le stylet, en partant d'un carré de 0,5~cm de côté. Quatre niveaux de difficulté ont été définis par l'indice de difficulté ID, calculé selon la formule suivante :
 
 \[
 \text{ID} = \log_2\!\left(\frac{2A}{w}\right)
 \]
 
-où $A$ désigne la distance à parcourir et $w$ la largeur de la 
-cible. Les paramètres associés à chaque niveau de difficulté 
-sont présentés dans le tableau~\ref{table:IDfitts}.
+où $A$ désigne la distance entre le centre de chaque cible et $w$ la largeur de la cible. Les paramètres associés à chaque niveau de difficulté sont présentés dans le tableau~\ref{table:IDfitts}.
 
 
 \begin{table}[ht]
@@ -80,12 +78,14 @@ sont présentés dans le tableau~\ref{table:IDfitts}.
 
 \section{Description du jeu de données}
 
-Les données ont été collectées sur quatre sites cliniques à l'aide d'un système de capture de mouvement Vicon%(+ ref mais pas la ref)
-. Au total, 66 enfants TSA et 62 enfants TD ont été rencontrés. Après traitement des données, le jeu de données final retenu pour les analyses comprend 45 enfants TSA et 49 enfants TD.
+%Les données ont été collectées sur quatre sites cliniques à l'aide d'un système de capture de mouvement Vicon%(+ ref mais pas la ref). 
+Au total, 66 enfants TSA et 62 enfants TD ont été rencontrés. Après traitement des données, le jeu de données final retenu pour les analyses comprend 45 enfants TSA et 49 enfants TD.
+%\medskip 
+À partir des enregistrements issus des quatre tâches, 142 variables motrices ont été extraites, auxquelles s'ajoutent l'âge et le sexe de chaque enfant, soit 144 variables prédictives (\textit{features}) au total. On peut répartir ces variables en trois catégories : des variables cinématiques et temporelles brutes (distances, vitesses, durées\dots), des variables dérivées (SPARC, curve index\dots) et des variables spécifiques aux tâches (indice d'isochronie, pente de la loi de Fitts\dots). Une description complète de l'ensemble des variables est disponible en \hyperref[table:annexe_description_var]{Annexe A}.
 
-\medskip 
+\medskip
 
-À partir des enregistrements issus des quatre tâches, 142 variables motrices ont été extraites, auxquelles s'ajoutent l'âge et le sexe de chaque enfant, soit 144 variables prédictives (\textit{features}) au total. On peut répartir ces variables en trois catégories : des variables cinématiques brutes (distances, vitesses\dots), des variables dérivées (SPARC, curve index\dots) et des variables spécifiques aux tâches (indice d'isochronie, pente de la loi de Fitts\dots). Une description complète de l'ensemble des variables est disponible en	\hyperref[table:annexe_description_var]{Annexe A}. Le ratio variables/observations ($D/n = 144/94 \approx 1.5$) est supérieur à~1. L'analyse statistique est donc dans un cas de grande dimension%Bellman fléeau ?
+Le ratio variables/observations ($D/n = 144/94 \approx 1.5$) est supérieur à~1. L'analyse statistique est donc dans un cas de grande dimension%Bellman fléeau ?
 . Ce constat motive le recours à un cadre régularisant pour déterminer les variables les plus caractéristiques.
 
 
@@ -113,7 +113,7 @@ En pratique, la distribution \textit{a posteriori} n'est pas calculable analytiq
 
  
  \section{Cadre interprétatif de la sélection}
- La sélection de variables est réalisée selon un critère prédictif (voir section~\ref{sec:critere}) : une variable est considérée comme informative si sa présence dans le modèle améliore la capacité à prédire l'appartenance au groupe TSA ou TD sur de nouvelles observations. Nous considérerons que si une variable est prédictive, alors elle reflète une caractéristique motrice différenciant les deux groupes sans que cela constitue une preuve de causalité. Ainsi, si un sous-ensemble de variables prédit aussi bien que le modèle complet, les variables exclues sont soit du bruit, soit redondantes, c'est-à-dire qu'elles partagent une information mutuelle 
+ La sélection de variables est réalisée selon un critère prédictif (voir section~\ref{sec:critere}) : une variable est considérée comme informative si sa présence dans le modèle améliore la capacité à prédire l'appartenance au groupe TSA ou TD sur de nouvelles observations \parencite{projpred}. Nous considérerons que si une variable est prédictive, alors elle reflète une caractéristique motrice différenciant les deux groupes sans que cela constitue une preuve de causalité. Ainsi, si un sous-ensemble de variables prédit aussi bien que le modèle complet, les variables exclues sont soit du bruit, soit redondantes, c'est-à-dire qu'elles partagent une information mutuelle 
  élevée \footnote{
  	Au sens de la théorie de l'information, l'information mutuelle entre deux variables aléatoires 
  	$X$ et $Y$ est définie par :
@@ -151,7 +151,7 @@ où $\pi_i = P(y_i = 1 \mid x_i)$ est la probabilité d'appartenir au groupe TSA
 
 \subsection{Spécification des priors}\label{sec:prior}
 
-Dans le cadre bayésien, les distributions a priori peuvent jouer un rôle analogue à la régularisation en statistique fréquentiste : elles contraignent les coefficients vers zéro en l'absence de signal suffisant dans les données. Un \textit{a priori} (prior) gaussien centré correspond à une pénalité ridge ($L_2$) tandis qu'un prior laplacien correspond à une pénalité lasso ($L_1$). Ces deux approches présentent cependant des limitations dans le régime $p > n$ : le prior gaussien écrase uniformément tous les coefficients sans produire de sparsité (coefficient à 0), tandis que le prior laplacien tend à trop contraindre les effets importants.
+Dans le cadre bayésien, les distributions a priori peuvent jouer un rôle analogue à la régularisation en statistique fréquentiste en contraignant les coefficients vers zéro, d'autant plus quand il y a peu de données. Un \textit{a priori} (prior) gaussien centré correspond à une pénalité ridge ($L_2$) tandis qu'un prior laplacien correspond à une pénalité lasso ($L_1$). Ces deux approches présentent cependant des limitations dans le régime $p > n$ : le prior gaussien écrase uniformément tous les coefficients sans produire de sparsité (coefficient à 0), tandis que le prior laplacien tend à trop contraindre les effets importants.
 
 \medskip 
 
@@ -185,7 +185,7 @@ L'intercept $\alpha$ reçoit un prior Student-t faiblement informatif, centré e
 
 \subsection{Critères de validité du modèle}\label{sec:validite}
 
-La performance prédictive du modèle est évaluée par validation croisée \textit{leave-one-out} (LOO-CV), approchée par l'estimateur PSIS-LOO (\textit{Pareto Smoothed Importance Sampling Leave-One-Out}) \parencite{Vehtari2015Jul}. Il estime l'\textit{expected log pointwise predictive density} (elpd), définie telle que :
+La performance prédictive du modèle est évaluée par validation croisée \textit{leave-one-out}\footnote{La validation croisée LOO correspond à, à chaque itération d'apprentissage/validation, réaliser l'apprentissage sur $n - 1$ observations et la validation sur l'unique observation restante.}\break (LOO-CV), approchée par l'estimateur PSIS-LOO (\textit{Pareto Smoothed Importance Sampling Leave-One-Out}) \parencite{Vehtari2015Jul}. Il estime l'\textit{expected log pointwise predictive density} (elpd), définie telle que :
 % pas besoin d'aller dans les détail de l'estimateur PSIS imo, trop technique pour rien
 \[
 \text{elpd}_{\text{loo}} = \sum_{i=1}^{n} 
@@ -197,12 +197,12 @@ où $p(y_i \mid y_{-i})$ désigne la probabilité assignée par le modèle ajust
 \medskip 
 
 La fiabilité de l'approximation PSIS-LOO est contrôlée par les diagnostics $\hat{k}$ de Pareto : pour chaque observation $i$, un $\hat{k} > 0.7$ signale que l'approximation est peu fiable pour cette observation et que l'estimation de l'elpd doit être interprétée avec précaution \parencite{Vehtari2015Jul}. La précision de classification (\textit{accuracy}) %, \texttt{pctcorr} dans \texttt{projpred}) %SACHANT QUE J'AI PAS ENCORE PARLÉ DE PROJPRED A VOIR)
- est rapportée comme critère complémentaire pour faciliter l'interprétation clinique des résultats. Elle est définie comme la proportion d'observations correctement classées, la classe prédite étant celle de probabilité maximale selon le modèle \parencite{projpred}.
+est rapportée comme critère complémentaire pour faciliter l'interprétation clinique des résultats. Elle est définie comme la proportion d'observations correctement classées, la classe prédite étant celle de probabilité maximale selon le modèle \parencite{projpred}.
 
 
 \subsection{Diagnostics MCMC}
- Il est nécessaire de vérifier la convergence des chaînes avant toute inférence. Quatre chaînes de chacune 4000 itérations ont été simulées, dont 2000 de préchauffage (\textit{warmup}), soit 8000 échantillons post-warmup au total. %Le paramètre \texttt{adapt\_delta} a été fixé à 0.95 (valeur par défaut : 0.8) afin de prévenir l'apparition de transitions divergentes (indicateur de difficultés d'exploration de la distribution \textit{a posteriori}). 
- La convergence est évaluée par le critère $\hat{R}$ de Gelman-Rubin. Une valeur $\hat{R}$ < 1.01 et une taille d'échantillon effective > 400 pour l'ensemble des paramètres sont retenues comme seuil de convergence \parencite{Vehtari2019Mar}. Ces diagnostics sont complétés par un examen visuel des traceplots, des graphiques d'autocorrélation et des distributions marginales \textit{a posteriori} (histogrammes et densités). %Compte tenu du nombre de paramètres, la checklist WAMBS complète n'est pas appliquée intégralement \parencite{Depaoli2017Jun} (exemple de diagnostics disponible en Annexe XXX).
+Il est nécessaire de vérifier la convergence des chaînes de Markov avant toute inférence, sans quoi les résultats risquent de ne pas être valides. Quatre chaînes de chacune 4000 itérations ont été simulées, dont 2000 de préchauffage (\textit{warmup}), soit 8000 échantillons post-warmup au total. %Le paramètre \texttt{adapt\_delta} a été fixé à 0.95 (valeur par défaut : 0.8) afin de prévenir l'apparition de transitions divergentes (indicateur de difficultés d'exploration de la distribution \textit{a posteriori}). 
+La convergence est évaluée par le critère $\hat{R}$ de Gelman-Rubin. Une valeur $\hat{R}$ < 1.01 et une taille d'échantillon effective > 400 pour l'ensemble des paramètres sont retenues comme seuil de convergence \parencite{Vehtari2019Mar}. Ces diagnostics sont complétés par un examen visuel des traceplots, des graphiques d'autocorrélation et des distributions marginales \textit{a posteriori} (histogrammes et densités). %Compte tenu du nombre de paramètres, la checklist WAMBS complète n'est pas appliquée intégralement \parencite{Depaoli2017Jun} (exemple de diagnostics disponible en Annexe XXX).
  
 \subsection{Vérifications prédictives (\textit{Predictive Checks)}}
 

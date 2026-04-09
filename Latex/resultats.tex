@@ -26,7 +26,7 @@ Les estimations \textit{a posteriori} sont présentées dans la table~\ref{table
 
 \medskip 
 
-Les performances prédictives du sous-modèle sont comparables à celles du modèle de référence (sous-modèle vs référence ; elpd : $-54.61$ vs $-57.52$, \textit{accuracy} : 0.678 vs 0.656).  La matrice de confusion montre une classification modérée, avec 13 faux négatifs et 12 faux positifs sur 90 observations. L'\textit{accuracy} globale restant inférieure au seuil de 0.70, la capacité prédictive du modèle de référence est elle-même limitée, ce qui invite à la prudence dans l'interprétation des variables sélectionnées. Par ailleurs, le modèle ne montre pas de signe de surapprentissage.
+Les performances prédictives du sous-modèle sont comparables à celles du modèle de référence (sous-modèle vs référence ; elpd : $-54.61$ vs $-57.52$, \textit{accuracy} : 0.678 vs 0.656).  La matrice de confusion montre une classification modérée, avec 13 faux négatifs (classifié TD au lieu de TSA) et 12 faux positifs (classifié TSA au lieu de TD) sur 90 observations. L'\textit{accuracy} globale restant inférieure au seuil de 0.70, la capacité prédictive du modèle de référence est elle-même limitée, ce qui invite à la prudence dans l'interprétation des variables sélectionnées. Par ailleurs, le modèle ne montre pas de signe de surapprentissage.
 
 \begin{figure}[ht]
 	\centering
@@ -170,7 +170,7 @@ La projection prédictive appliquée aux variables de la tâche PA conduit à la
 
 
 
-Les performances prédictives du sous-modèle sont comparables à celles du modèle de référence PA (sous-modèle vs référence~; elpd : $-52.82$ vs $-55.28$, \textit{accuracy} : 0.700 vs 0.700). La matrice de confusion indique 15 faux négatifs et 11 faux positifs sur 90 observations. Ces performances sont légèrement supérieures à celles obtenues sur le modèle global (section~\ref{sec:sel_global}), ce qui suggère que la restriction de l'espace des variables à la tâche PA réduit le bruit introduit par des variables peu informatives. On notera que l'elpd du sous-modèle est légèrement supérieur à celui du modèle de référence (figure~\ref{fig:elpd_PA}), ce qui peut refléter la régularisation induite par la réduction du modèle.
+Les performances prédictives du sous-modèle sont comparables à celles du modèle de référence PA (sous-modèle vs référence~; elpd : $-52.82$ vs $-55.28$, \textit{accuracy} : 0.700 vs 0.700). La matrice de confusion indique 15 faux négatifs (classifié TD au lieu de TSA) et 11 faux positifs (classifié TSA au lieu de TD) sur 90 observations. Ces performances sont légèrement supérieures à celles obtenues sur le modèle global (section~\ref{sec:sel_global}), ce qui suggère que la restriction de l'espace des variables à la tâche PA réduit le bruit introduit par des variables peu informatives. On notera que l'elpd du sous-modèle est légèrement supérieur à celui du modèle de référence (figure~\ref{fig:elpd_PA}), ce qui peut refléter la régularisation induite par la réduction du modèle.
 
 \medskip
 

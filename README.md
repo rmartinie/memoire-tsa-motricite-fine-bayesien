@@ -70,7 +70,7 @@ au sein de cet échantillon.
 **Mots-clefs** : TSA, motricité fine, inférence bayésienne, projection
 prédictive, contrôle proactif. 
 
-## ABSTRACT
+## Abstract
 **Objectives**: To identify the most characteristic fine motor markers of
 ASD in children to improve the understanding of the motor phenotype and
 explore complementary ways of diagnostic.
