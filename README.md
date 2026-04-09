@@ -29,12 +29,73 @@ Ce mémoire en est une tentative d'exemple concret. Je suis bien conscient que c
 Cependant, si vous trouvez une erreur dans le texte, dans le code, je vous invite à ouvrir une issue, ou forker le dépot pour reprendr le mémoire comme base par exemple.
 Pour tout commentaire, n'hésitez pas à venir en discuter.
 
+# Identification des marqueurs de motricité fine les plus caractéristiques des TSA chez l'enfant : Approche bayésienne par projection prédictive 
+***Présenté par : Romain MARTINIE***
 
-# Résumé
-**Objectif** : XXX **Méthode** : XXX **Résultats** : XXX **Discussion** : XXX **Conclusion** : 200-250 mots
-**Mots-clefs** : 4-5
+*Sous la direction de : Laetitia FRADET (Université de Bretagne-Sud) &
+Germain FAITY (ENS 2SEP)*
 
-# ABSTRACT
-**Objectives** : XXX **Method** : XXX **Results** : XXX **Discussion** : XXX **Conclusion** : XXX
 
-**Keywords** : 4-5
+## Résumé
+**Objectif** : Identifier les marqueurs de motricité fine les plus
+caractéristiques des TSA chez l'enfant pour améliorer la compréhension
+du phénotype moteur et explorer des pistes diagnostiques
+complémentaires. 
+
+**Méthode** : Des marqueurs de motricité fine de 90
+enfants (46 TD, 44 TSA) ont été analysés via une approche bayésienne par
+projection prédictive. Un modèle de référence intégrant 144 variables
+issues de quatre tâches motrices a été décomposé pour identifier la
+tâche la plus discriminante. Une sélection de variables a ensuite été
+opérée sur le sous-modèle retenu. 
+
+**Résultats** : La tâche de Pointage
+Anticipation (PA) a été sélectionnée comme la plus informative. Deux
+variables suffisantes pour reproduire la capacité prédictive du modèle
+ont été identifiées : une codant l'amplitude du mouvement et une la
+fluidité.
+
+**Discussion** : Les coefficients négatifs associés aux variables
+sélectionnées traduisent une hypokinésie et un déficit de fluidité chez
+les enfants TSA, ce qui semble être causé par des altérations des
+mécanismes de planification en *feedforward* potentiellement liés au
+cervelet et aux ganglions de la base.
+
+**Conclusion** : Bien qu'exploratoires en raison du contexte de haute
+dimensionnalité, ces résultats pointent vers une réduction de
+l'amplitude du mouvement et de la fluidité lors de tâches de pointage
+comme les marqueurs de motricité fine les plus caractéristiques des TSA
+au sein de cet échantillon.
+
+**Mots-clefs** : TSA, motricité fine, inférence bayésienne, projection
+prédictive, contrôle proactif. 
+
+## ABSTRACT
+**Objectives**: To identify the most characteristic fine motor markers of
+ASD in children to improve the understanding of the motor phenotype and
+explore complementary ways of diagnostic.
+
+**Method**: Fine motor markers from 90 children (46 TD, 44 ASD) were
+analyzed using a Bayesian projective prediction approach. A reference
+model incorporating 144 variables from four motor tasks was decomposed
+to identify the most discriminant task. Variable selection was then
+performed on the selected sub-model.
+
+**Results**: The Pointing task with Anticipation (PA) was selected as the
+most informative. Two variables sufficient to replicate the model's
+predictive power were identified: one encoding movement amplitude and
+one encoding smoothness.
+
+**Discussion**: The negative coefficients associated with the selected
+variables reflect hypokinesia and a lack of smoothness in children with
+ASD, potentially caused by alterations in feedforward planning
+mechanisms linked to the cerebellum and basal ganglia.
+
+**Conclusion**: Although exploratory due to the high-dimensional context,
+these results point to reduced movement amplitude and smoothness during
+pointing tasks as the most characteristic fine motor markers of ASD
+within this sample.
+
+**Keywords**: ASD, fine motor skills, Bayesian inference, projective
+prediction, feedforward control.
+
