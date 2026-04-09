@@ -13,7 +13,7 @@ La courbe elpd (figure~\ref{fig:elpd_ref}) présente une première difficulté d
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=1]{elpd_ref.pdf}
-	\caption[Courbes elpd et \textit{accuracy} issues du modèle de référence global]{Courbes de l'elpd et de l'accuracy issues du modèle de référence global, en fonction du nombre de variables incluses dans le sous-modèle, obtenues par projection prédictive avec validation croisée. Chaque point représente la différence d'elpd/d'\textit{accuracy} entre le sous-modèle et le modèle de référence. Les barres d'erreur indiquent l'incertitude à $\pm 1$ erreur standard. Une différence proche de zéro indique des performances prédictives équivalentes au modèle de référence global.}
+	\caption[Courbes elpd et \textit{accuracy} issues du modèle de référence global]{Courbes de l'elpd et de l'\textit{accuracy} issues du modèle de référence global, en fonction du nombre de variables incluses dans le sous-modèle, obtenues par projection prédictive avec validation croisée. Chaque point représente la différence d'elpd/d'\textit{accuracy} entre le sous-modèle et le modèle de référence. Les barres d'erreur indiquent l'incertitude à $\pm 1$ erreur standard. Une différence proche de zéro indique des performances prédictives équivalentes au modèle de référence global.}
 	\label{fig:elpd_ref}
 \end{figure}
 
@@ -105,7 +105,7 @@ Les signes et ordres de grandeur des effets sont identiques dans toutes les conf
 	\label{table:sensi_full}
 \end{table} 
 
-Sur le plan prédictif, les performances sont stables. Les valeurs d'elpd et d'accuracy du modèle de référence et du sous-modèle restent du même ordre quelle que soit la valeur de $p_0$. On note toutefois qu'avec $p_0 = 20$, l'accuracy du sous-modèle (0.689) est supérieure à celle du modèle de référence (0.667), tandis que les valeurs d'elpd demeurent proches. À l'inverse, avec $p_0 = 5$, les deux métriques convergent et les estimations des coefficients sont légèrement plus faibles. Cela indique une régularisation plus forte. La configuration $p_0 = 10$ semble donc être un compromis satisfaisant.
+Sur le plan prédictif, les performances sont stables. Les valeurs d'elpd et d'\textit{accuracy} du modèle de référence et du sous-modèle restent du même ordre quelle que soit la valeur de $p_0$. On note toutefois qu'avec $p_0 = 20$, l'\textit{accuracy} du sous-modèle (0.689) est supérieure à celle du modèle de référence (0.667), tandis que les valeurs d'elpd demeurent proches. À l'inverse, avec $p_0 = 5$, les deux métriques convergent et les estimations des coefficients sont légèrement plus faibles. Cela indique une régularisation plus forte. La configuration $p_0 = 10$ semble donc être un compromis satisfaisant.
 
 %
 %
@@ -189,7 +189,7 @@ Les estimations des coefficients \textit{a posteriori}, conditionnellement au mo
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=1]{elpd_PA.pdf}
-	\caption[Courbes elpd et d'accuracy issues du modèle de référence PA]{Courbes de l'elpd et de l'accuracy issues du modèle de référence PA, en fonction du nombre de variables incluses dans le sous-modèle, obtenues par projection prédictive avec validation croisée. Chaque point représente la différence d'elpd/d'accuracy entre le sous-modèle et le modèle de référence. Les barres d'erreur indiquent l'incertitude à $\pm 1$ erreur standard. Une différence proche de zéro indique des performances prédictives équivalentes au modèle de référence.}
+	\caption[Courbes elpd et d'\textit{accuracy} issues du modèle de référence PA]{Courbes de l'elpd et de l'\textit{accuracy} issues du modèle de référence PA, en fonction du nombre de variables incluses dans le sous-modèle, obtenues par projection prédictive avec validation croisée. Chaque point représente la différence d'elpd/d'\textit{accuracy} entre le sous-modèle et le modèle de référence. Les barres d'erreur indiquent l'incertitude à $\pm 1$ erreur standard. Une différence proche de zéro indique des performances prédictives équivalentes au modèle de référence.}
 	\label{fig:elpd_PA}
 \end{figure}
 
@@ -234,7 +234,7 @@ Deux valeurs alternatives du paramètre $p_0$ ont été testées et comparées �
 
 \medskip 
 
-Sur le plan prédictif, les performances restent globalement stables. Avec $p_0 = 10$, on observe néanmoins que l'accuracy du modèle de référence augmente (0.711) alors que celle du sous-modèle ne suit pas (0.700), tandis que les valeurs d'elpd évoluent peu. Cela suggère un léger surapprentissage du modèle de référence. 
+Sur le plan prédictif, les performances restent globalement stables. Avec $p_0 = 10$, on observe néanmoins que l'\textit{accuracy} du modèle de référence augmente (0.711) alors que celle du sous-modèle ne suit pas (0.700), tandis que les valeurs d'elpd évoluent peu. Cela suggère un léger surapprentissage du modèle de référence. 
 
 \begin{table}[ht]
 	\centering
@@ -279,7 +279,7 @@ Sur le plan prédictif, les performances restent globalement stables. Avec $p_0 
 
 \subsection{Représentation dans l'espace des variables sélectionnées}
 
-La figure~\ref{fig:espace_sel} représente les observations dans l'espace des deux variables sélectionnées, \texttt{L2\_large} et \texttt{Sparc\_small}. Les deux groupes forment des nuages distincts mais se chevauchent partiellement. Ce chevauchement est cohérent avec les performances prédictives observées (accuracy de 0.700).
+La figure~\ref{fig:espace_sel} représente les observations dans l'espace des deux variables sélectionnées, \texttt{L2\_large} et \texttt{Sparc\_small}. Les deux groupes forment des nuages distincts mais se chevauchent partiellement. Ce chevauchement est cohérent avec les performances prédictives observées (\textit{accuracy} de 0.700).
 
 
 \begin{figure}[h!] % rajouter la droite de la regression ?
