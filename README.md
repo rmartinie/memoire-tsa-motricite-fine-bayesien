@@ -26,9 +26,8 @@ Dans cette logique, la posterior d'aujourd'hui est le prior de demain. L'idée s
 une véritable science cumulative, de ne pas tout recommencer à zéro à chaque article.
 
 Ce mémoire en est une tentative d'exemple concret. Je suis bien conscient que ce n'est qu'une "preuve de concept".
-Cependant, si vous trouvez une erreur dans le texte, dans le code, je vous invite à ouvrir une issue. Si vous voulez reprendre le mémoire comme base, à forker le dépot.
-Et pour tout commentaire, à venir en discuter.
-
+Cependant, si vous trouvez une erreur dans le texte, dans le code, je vous invite à ouvrir une issue, ou forker le dépot pour reprendr le mémoire comme base par exemple.
+Pour tout commentaire, n'hésitez pas à venir en discuter.
 
 
 # Résumé
