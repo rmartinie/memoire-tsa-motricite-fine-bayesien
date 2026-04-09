@@ -185,7 +185,7 @@ L'intercept $\alpha$ reçoit un prior Student-t faiblement informatif, centré e
 
 \subsection{Critères de validité du modèle}\label{sec:validite}
 
-La performance prédictive du modèle est évaluée par validation croisée \textit{leave-one-out}\footnote{La validation croisée LOO correspond à, à chaque itération d'apprentissage/validation, réaliser l'apprentissage sur $n - 1$ observations et la validation sur l'unique observation restante.}\break (LOO-CV), approchée par l'estimateur PSIS-LOO (\textit{Pareto Smoothed Importance Sampling Leave-One-Out}) \parencite{Vehtari2015Jul}. Il estime l'\textit{expected log pointwise predictive density} (elpd), définie telle que :
+La performance prédictive du modèle est évaluée par validation croisée \textit{leave-one-out}\footnote{La validation croisée LOO correspond à, à chaque itération d'apprentissage/validation, réaliser l'apprentissage sur $n - 1$ observations et la validation sur l'unique observation restante. Il y a donc $n$ itérations.}\break (LOO-CV), approchée par l'estimateur PSIS-LOO (\textit{Pareto Smoothed Importance Sampling Leave-One-Out}) \parencite{Vehtari2015Jul}. Il estime l'\textit{expected log pointwise predictive density} (elpd), définie telle que :
 % pas besoin d'aller dans les détail de l'estimateur PSIS imo, trop technique pour rien
 \[
 \text{elpd}_{\text{loo}} = \sum_{i=1}^{n} 
