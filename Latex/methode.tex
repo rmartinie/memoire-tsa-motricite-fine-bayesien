@@ -35,7 +35,7 @@ La tâche d'anticipation écriture (ll\_ln) consistait à recopier avec le style
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.8]{ll_ln.pdf}
-	\caption{Représentation des visuels utilisés pour la réalisation de la tâche d'Anticipation Ecriture}
+	\caption{Représentation des visuels utilisés pour la réalisation de la tâche d'Anticipation Écriture}
 	\label{fig:ll_ln}
 \end{figure}
 
@@ -53,7 +53,7 @@ Pour la tâche d'isochronie (Epow), le participant devait recopier, avec le styl
 
 \subsubsection{Pointage simple}
 
-La tâche de Pointage simple (PS) correspondait à une tâche de Fitts. Le participant devait pointer une cible avec le stylet dès son apparition, le plus rapidement possible et sans lever le stylet, en partant d'un carré de 0,5~cm de côté. Quatre niveaux de difficulté ont été définis par l'indice de difficulté ID, calculé selon la formule suivante :
+La tâche de Pointage Simple (PS) correspondait à une tâche de Fitts. Le participant devait pointer une cible avec le stylet dès son apparition, le plus rapidement possible et sans lever le stylet, en partant d'un carré de 0,5~cm de côté. Quatre niveaux de difficulté ont été définis par l'indice de difficulté ID, calculé selon la formule suivante :
 
 \[
 \text{ID} = \log_2\!\left(\frac{2A}{w}\right)
@@ -80,11 +80,13 @@ sont présentés dans le tableau~\ref{table:IDfitts}.
 
 \section{Description du jeu de données}
 
-Les données ont été collectées sur quatre sites cliniques à l'aide d'un système de capture de mouvement Vicon (+ ref). Au total, 66 enfants TSA et 62 enfants TD ont été rencontrés. Après traitement des données, le jeu de données final retenu pour les analyses comprend 45 enfants TSA et 49 enfants TD.
+Les données ont été collectées sur quatre sites cliniques à l'aide d'un système de capture de mouvement Vicon%(+ ref mais pas la ref)
+. Au total, 66 enfants TSA et 62 enfants TD ont été rencontrés. Après traitement des données, le jeu de données final retenu pour les analyses comprend 45 enfants TSA et 49 enfants TD.
 
 \medskip 
 
-À partir des enregistrements issus des quatre tâches, 142 variables motrices ont été extraites, auxquelles s'ajoutent l'âge et le sexe de chaque enfant, soit 144 variables prédictives (\textit{features}) au total. Ces variables se répartissent en trois catégories : des variables directes? (distances, vitesses...), des variables dérivées (SPARC, curve index...) et des variables spécifiques aux tâches (indice d'isochronie, pente de la loi de Fitts...). Une description complète de l'ensemble des variables est disponible en	\hyperref[table:annexe_description_var]{Annexe A}. Le ratio variables/observations ($D/n = 144/94 \approx 1.5$) est supérieur à~1. L'analyse statistique est donc dans un cas de grande dimension + citation fléau de la dimensionnalité ?. Ce constat motive le recours à un cadre régularisant pour déterminer les variables les plus caractéristiques.
+À partir des enregistrements issus des quatre tâches, 142 variables motrices ont été extraites, auxquelles s'ajoutent l'âge et le sexe de chaque enfant, soit 144 variables prédictives (\textit{features}) au total. On peut répartir ces variables en trois catégories : des variables cinématiques brutes (distances, vitesses\dots), des variables dérivées (SPARC, curve index\dots) et des variables spécifiques aux tâches (indice d'isochronie, pente de la loi de Fitts\dots). Une description complète de l'ensemble des variables est disponible en	\hyperref[table:annexe_description_var]{Annexe A}. Le ratio variables/observations ($D/n = 144/94 \approx 1.5$) est supérieur à~1. L'analyse statistique est donc dans un cas de grande dimension%Bellman fléeau ?
+. Ce constat motive le recours à un cadre régularisant pour déterminer les variables les plus caractéristiques.
 
 
 
@@ -111,7 +113,7 @@ En pratique, la distribution \textit{a posteriori} n'est pas calculable analytiq
 
  
  \section{Cadre interprétatif de la sélection}
- La sélection de variables est réalisée selon un critère prédictif (voir section~\ref{sec:critere}) : une variable est considérée comme informative si sa présence dans le modèle améliore la capacité à prédire l'appartenance au groupe TSA ou TD sur de nouvelles observations. Nous considèrerons que si une variable est prédictive, alors elle reflète une caractéristique motrice différenciant les deux groupes sans que cela constitue une preuve de causalité. Ainsi, si un sous-ensemble de variables prédit aussi bien que le modèle complet, les variables exclues sont soit du bruit, soit redondantes, c'est-à-dire qu'elles partagent une information mutuelle 
+ La sélection de variables est réalisée selon un critère prédictif (voir section~\ref{sec:critere}) : une variable est considérée comme informative si sa présence dans le modèle améliore la capacité à prédire l'appartenance au groupe TSA ou TD sur de nouvelles observations. Nous considérerons que si une variable est prédictive, alors elle reflète une caractéristique motrice différenciant les deux groupes sans que cela constitue une preuve de causalité. Ainsi, si un sous-ensemble de variables prédit aussi bien que le modèle complet, les variables exclues sont soit du bruit, soit redondantes, c'est-à-dire qu'elles partagent une information mutuelle 
  élevée \footnote{
  	Au sens de la théorie de l'information, l'information mutuelle entre deux variables aléatoires 
  	$X$ et $Y$ est définie par :
@@ -119,7 +121,7 @@ En pratique, la distribution \textit{a posteriori} n'est pas calculable analytiq
  	I(X\,;Y) = H(X) + H(Y) - H(X,Y)
  	\]
  	où $H$ désigne l'entropie de Shannon. Elle mesure la quantité d'information partagée entre $X$ et $Y$, et vaut zéro si et seulement si $X$ et $Y$ sont indépendantes.
- } avec les variables déjà sélectionnées sans pour autant être du bruit. La redondance n'est pas limitée aux relations linéaires d'ordre~1 (corrélation) : des dépendances non-linéaires entre variables peuvent également conduire à l'exclusion d'une variable par ailleurs pertinente.
+ } avec les variables déjà sélectionnées sans pour autant être du bruit. La redondance n'est pas limitée aux relations linéaires d'ordre~1 (corrélation) : des dépendances non linéaires entre variables peuvent également conduire à l'exclusion d'une variable par ailleurs pertinente.
 
 \medskip 
 
@@ -149,7 +151,7 @@ où $\pi_i = P(y_i = 1 \mid x_i)$ est la probabilité d'appartenir au groupe TSA
 
 \subsection{Spécification des priors}\label{sec:prior}
 
-Dans le cadre bayésien, les distributions a priori peuvent jouer un rôle analogue à la régularisation en statistique fréquentiste : elles contraignent les coefficients vers zéro en l'absence de signal suffisant dans les données. Un prior gaussien centré correspond à une pénalité ridge ($L_2$) tandis qu'un prior laplacien correspond à une pénalité lasso ($L_1$). Ces deux approches présentent cependant des limitations dans le régime $p > n$ : le prior gaussien écrase uniformément tous les coefficients sans produire de sparsité (coefficient à 0), tandis que le prior laplacien tend à trop contraindre les effets importants.
+Dans le cadre bayésien, les distributions a priori peuvent jouer un rôle analogue à la régularisation en statistique fréquentiste : elles contraignent les coefficients vers zéro en l'absence de signal suffisant dans les données. Un \textit{a priori} (prior) gaussien centré correspond à une pénalité ridge ($L_2$) tandis qu'un prior laplacien correspond à une pénalité lasso ($L_1$). Ces deux approches présentent cependant des limitations dans le régime $p > n$ : le prior gaussien écrase uniformément tous les coefficients sans produire de sparsité (coefficient à 0), tandis que le prior laplacien tend à trop contraindre les effets importants.
 
 \medskip 
 
@@ -163,7 +165,7 @@ Le prior \textit{Regularized Horseshoe} (RHS) \parencite{Piironen2017Jul} est pr
 	\frac{\nu s^2}{2}\right)
 \end{align*}
 
-où $\mathrm{C}^+$ désigne la distribution demi-Cauchy. Le paramètre $\tau$ joue le rôle de \textit{shrinkage global} : il pousse l'ensemble des coefficients vers zéro. Le paramètre $\lambda_j$ joue le rôle de \textit{shrinkage local} : il permet aux coefficients présentant un signal suffisant d'échapper à cet écrasement. Le terme $c^2$, issu d'une distribution Inverse-Gamma de paramètres $(\nu/2, \nu s^2/2)$ avec $\nu = 4$ et $s = 2$ (valeurs recommandées par \cite{Piironen2017Jul}), régularise les coefficients importants en bornant leur variance \textit{a priori}.
+où $\mathrm{C}^+$ désigne la distribution demi-Cauchy. Le paramètre $\tau$ joue le rôle de \textit{shrinkage global} : il pousse l'ensemble des coefficients vers zéro. Le paramètre $\lambda_j$ joue le rôle de \textit{shrinkage local} : il permet aux coefficients présentant un signal suffisant d'échapper à cet écrasement. Le terme $c^2$, issu d'une distribution \textit{Inverse-Gamma} de paramètres $(\nu/2, \nu s^2/2)$ avec $\nu = 4$ et $s = 2$ (valeurs recommandées par \cite{Piironen2017Jul}), régularise les coefficients importants en bornant leur variance \textit{a priori}.
 
 L'hyperparamètre $\tau_0$, qui calibre le shrinkage global en fonction de la sparsité attendue, est défini par :
 
@@ -171,7 +173,7 @@ L'hyperparamètre $\tau_0$, qui calibre le shrinkage global en fonction de la sp
 \tau_0 = \frac{p_0}{D - p_0}\,\frac{\sigma}{\sqrt{n}}
 \]
 
-où $p_0$ est le nombre de variables a priori supposées prédictives, $D$ le nombre total de variables, $n$ la taille d'échantillon, et $\sigma$ une facteur d'échelle dans le cadre de la régression logistique. Conformément aux recommandations de \textcite{Piironen2017Jul} pour la régression logistique, $\sigma$ est fixé à 2. Nous posons $p_0 = 10$, reflétant l'hypothèse que seul un petit nombre de variables parmi les $D = 144$ est suffisant pour discriminer les deux groupes. Ce choix est exploratoire et sa sensibilité est évaluée dans la section~\ref{sec:sensi}.
+où $p_0$ est le nombre de variables a priori supposées prédictives, $D$ le nombre total de variables, $n$ la taille d'échantillon, et $\sigma$ un facteur d'échelle dans le cadre de la régression logistique. Conformément aux recommandations de \textcite{Piironen2017Jul} pour la régression logistique, $\sigma$ est fixé à 2. Nous posons $p_0 = 10$, reflétant l'hypothèse que seul un petit nombre de variables parmi les $D = 144$ est suffisant pour discriminer les deux groupes. Ce choix est exploratoire et sa sensibilité est évaluée dans la section~\ref{sec:sensi}.
 
 L'intercept $\alpha$ reçoit un prior Student-t faiblement informatif, centré en zéro :
 
@@ -199,7 +201,7 @@ La fiabilité de l'approximation PSIS-LOO est contrôlée par les diagnostics $\
 
 
 \subsection{Diagnostics MCMC}
- Il est nécessaire de vérifier la convergence des chaînes avant toute inférence. Quatre chaînes de  de chacune 4000 itérations ont été simulées, dont 2000 de préchauffage (\textit{warmup}), soit 8000 échantillons post-warmup au total. %Le paramètre \texttt{adapt\_delta} a été fixé à 0.95 (valeur par défaut : 0.8) afin de prévenir l'apparition de transitions divergentes (indicateur de difficultés d'exploration de la distribution \textit{a posteriori}). 
+ Il est nécessaire de vérifier la convergence des chaînes avant toute inférence. Quatre chaînes de chacune 4000 itérations ont été simulées, dont 2000 de préchauffage (\textit{warmup}), soit 8000 échantillons post-warmup au total. %Le paramètre \texttt{adapt\_delta} a été fixé à 0.95 (valeur par défaut : 0.8) afin de prévenir l'apparition de transitions divergentes (indicateur de difficultés d'exploration de la distribution \textit{a posteriori}). 
  La convergence est évaluée par le critère $\hat{R}$ de Gelman-Rubin. Une valeur $\hat{R}$ < 1.01 et une taille d'échantillon effective > 400 pour l'ensemble des paramètres sont retenues comme seuil de convergence \parencite{Vehtari2019Mar}. Ces diagnostics sont complétés par un examen visuel des traceplots, des graphiques d'autocorrélation et des distributions marginales \textit{a posteriori} (histogrammes et densités). %Compte tenu du nombre de paramètres, la checklist WAMBS complète n'est pas appliquée intégralement \parencite{Depaoli2017Jun} (exemple de diagnostics disponible en Annexe XXX).
  
 \subsection{Vérifications prédictives (\textit{Predictive Checks)}}
@@ -242,7 +244,7 @@ La tâche PA présente un elpd dont l'écart au modèle global reste inférieur 
 
 
 \section{Analyse de sensibilité}\label{sec:sensi}
-La sensibilité des résultats au choix de $p_0$ a été évaluée en réajustant le modèle de référence complet ($D=144$) avec trois valeurs : $p_0 \in \{5, 10, 20\}$, et le modèle de référence PA ($D=24$) avec $p_0 \in \{3, 5, 10\}$. Pour chaque valeur, $\tau_0$ est recalculé en conséquence (voir section~\ref{sec:prior}) et la procédure \texttt{cv\_varsel} est réappliquée. La stabilité des variables sélectionnées, de la taille du sous-modèle retenu et des coefficients des variables sont examinées pour chacun des scénarios.
+La sensibilité des résultats au choix de $p_0$ a été évaluée en réajustant le modèle de référence complet ($D=144$) avec trois valeurs : $p_0 \in \{5, 10, 20\}$, et le modèle de référence PA ($D=24$) avec $p_0 \in \{3, 5, 10\}$. Pour chaque valeur, $\tau_0$ est recalculé en conséquence (voir section~\ref{sec:prior}) et la procédure \texttt{cv\_varsel} est réappliquée. La stabilité des variables sélectionnées, de la taille du sous-modèle retenu et des coefficients des variables est examinée pour chacun des scénarios.
 % + idem refaire une sensibilité avec p0 = 2 5 ou 10 sur PA ?
 
 
