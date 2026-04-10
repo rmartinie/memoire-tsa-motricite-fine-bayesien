@@ -1,17 +1,17 @@
 # Et si les journaux scientifiques étaient inutiles ?
 
-Les chercheurs paient trois fois pour publier leurs propres travaux. 
+Les chercheur.es paient trois fois pour publier leurs propres travaux. 
 Ils achètent l'accès aux articles via leur université. 
 Ils font le peer review gratuitement. 
 Et ils offrent leur travail au journal, parfois même en payant pour publier ! 
 
 Ce modèle ne fait pas que coûter cher, il oriente aussi la recherche.
-Alors oui, la science est située socialement, et c'est normal car les chercheurs le sont aussi.
+Alors oui, la science est située socialement, et c'est normal car les chercheur.es le sont aussi.
 Pour autant, est-ce nécessaire que des organismes à but lucratif et des [états fascistes](https://pen.org/banned-words-list/) aient une influence considérable ?
 
 Je pense que ce contexte participe largement à produire de la [*fast science*](https://journals.openedition.org/socio/14142), [difficile à répliquer](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124),
 aidée par une approche NHST et une [quête de la p-value significative](https://www.semanticscholar.org/paper/Scientists-rise-up-against-statistical-significance-Amrhein-Greenland/bd933600365e9fe235425e932ac9c76652b59ab3) qui conduit à du p-hacking et une inflation des erreurs de type I.
-Le système donne aux chercheurs toutes les *incentives* possibles à produire beaucoup d'articles. Ce n'est pas eux que je critique, c'est ce qui est valorisé par le système.
+Le système donne aux chercheur.es toutes les *incentives* possibles à produire beaucoup d'articles. Ce n'est pas eux que je critique, c'est ce qui est valorisé par le système.
 
 Pour autant, l'article, une fois publié après la relecture de 2 ou 3 peer-reviewers, est figé. Alors que la connaissance, elle, elle avance.
 
@@ -49,11 +49,10 @@ issues de quatre tâches motrices a été décomposé pour identifier la
 tâche la plus discriminante. Une sélection de variables a ensuite été
 opérée sur le sous-modèle retenu. 
 
-**Résultats** : La tâche de Pointage
-Anticipation (PA) a été sélectionnée comme la plus informative. Deux
-variables suffisantes pour reproduire la capacité prédictive du modèle
-ont été identifiées : une codant l'amplitude du mouvement et une la
-fluidité.
+**Résultats** : La tâche de Pointage Anticipation (PA) a été sélectionnée comme 
+la plus informative. Deux variables suffisantes pour reproduire la capacité prédictive
+du modèle ont été identifiées : une codant l'amplitude du mouvement et une la fluidité,
+avec une précision similaire à ce qui est rapporté dans la littérature (0.700).
 
 **Discussion** : Les coefficients négatifs associés aux variables
 sélectionnées traduisent une hypokinésie et un déficit de fluidité chez
@@ -81,10 +80,12 @@ model incorporating 144 variables from four motor tasks was decomposed
 to identify the most discriminant task. Variable selection was then
 performed on the selected sub-model.
 
-**Results**: The Pointing task with Anticipation (PA) was selected as the
-most informative. Two variables sufficient to replicate the model's
-predictive power were identified: one encoding movement amplitude and
-one encoding smoothness.
+**Results**: The Pointing task with Anticipation (PA) 
+was selected as the most informative. Two variables sufficient to 
+replicate the model's predictive power were identified: one encoding 
+movement amplitude and one encoding smoothness, achieving an accuracy 
+similar to that reported in the literature (0.700).
+
 
 **Discussion**: The negative coefficients associated with the selected
 variables reflect hypokinesia and a lack of smoothness in children with
