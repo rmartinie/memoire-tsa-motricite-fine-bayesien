@@ -1,9 +1,8 @@
 # Et si les journaux scientifiques étaient inutiles ?
 
 Les chercheur.euses paient trois fois pour publier leurs propres travaux. 
-Ils achètent l'accès aux articles via leur université. 
-Ils font le peer review gratuitement. 
-Et ils offrent leur travail au journal, parfois même en payant pour publier ! 
+Ils et elles achètent l'accès aux articles via leur université, font le peer review gratuitement, 
+et offrent leur travail au journal, parfois même en payant pour publier ! 
 
 Ce modèle ne fait pas que coûter cher, il oriente aussi la recherche.
 Alors oui, la science est située socialement, et c'est normal car les chercheur.euses le sont aussi.
@@ -11,7 +10,7 @@ Pour autant, est-ce nécessaire que des organismes à but lucratif et des [état
 
 Je pense que ce contexte participe largement à produire de la [*fast science*](https://journals.openedition.org/socio/14142), [difficile à répliquer](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124),
 aidée par une approche NHST et une [quête de la p-value significative](https://www.semanticscholar.org/paper/Scientists-rise-up-against-statistical-significance-Amrhein-Greenland/bd933600365e9fe235425e932ac9c76652b59ab3) qui conduit à du p-hacking et une inflation des erreurs de type I.
-Le système donne aux chercheur.euses toutes les *incentives* possibles à produire beaucoup d'articles. Ce n'est pas eux que je critique, c'est ce qui est valorisé par le système.
+Le système donne aux chercheur.euses toutes les *incentives* possibles à produire beaucoup d'articles. Ce n'est pas elles et eux que je critique, c'est ce qui est valorisé par le système.
 
 Pour autant, l'article, une fois publié après la relecture de 2 ou 3 peer-reviewers, est figé. Alors que la connaissance, elle, elle avance.
 

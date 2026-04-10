@@ -154,11 +154,13 @@ Un modèle non linéaire aurait probablement pu améliorer la capacité prédict
 Certaines limites doivent être signalées. La principale limite est la taille d'échantillon ($n = 90$), qui contraint à la fois le pouvoir prédictif et la précision des estimations. % ML'incertitude sur l'estimation des coefficients en est la conséquence directe. 
 La probabilité de direction est forte pour les deux variables retenues, mais la taille d'effet des coefficients reste très incertaine. Les résultats sont donc à considérer comme exploratoires et appellent une confirmation sur des échantillons plus larges. De plus, l'estimation de la performance prédictive du modèle est à interpréter avec prudence. En effet, la fiabilité de l'approximation PSIS-LOO est variable selon le modèle considéré. Dans le modèle global, environ 10\,\% des observations présentent des valeurs $\hat{k} > 0.7$. Néanmoins, le modèle issu de la tâche PA n'est pas concerné par cette limite.
 
+\medskip 
+
 La généralisabilité des résultats est également à nuancer. L'échantillon est clinique et équilibré artificiellement sur le sexe et l'âge, si bien que les performances prédictives obtenues ne se transposent pas directement à la population TSA. De même, l'absence de validation externe sur un échantillon indépendant ne permet pas de conclure à la robustesse des variables sélectionnées au-delà du jeu de données concerné. La double validation croisée LOO atténue cette limite sans pour autant l'éliminer. \texttt{L2\_large} et \texttt{Sparc\_small} sont donc des variables candidates pour de futures études, non des biomarqueurs validés.
 
 \medskip 
 
-Enfin, l'espace de variables est contraint par le protocole expérimental. D'autres tâches de motricité fine, impliquant par exemple la coordination bimanuelle, ou des séquences plus complexes, auraient pu capturer des variables discriminantes non explorées ici. Cette limite est toutefois relative. Le protocole couvre plusieurs tâches et un nombre important de variables, il aurait été compliqué d'augmenter le nombre de celles-ci sans augmenter la taille de l'échantillon.
+Enfin, l'espace de variables est contraint par le protocole expérimental. D'autres tâches de motricité fine, impliquant par exemple la coordination bimanuelle ou des séquences plus complexes, auraient pu capturer des variables discriminantes non explorées ici. Cette limite est toutefois relative. Le protocole couvre plusieurs tâches et un nombre important de variables, il aurait été compliqué d'augmenter le nombre de celles-ci sans augmenter la taille de l'échantillon.
 
 %
 %\section{Limites}
