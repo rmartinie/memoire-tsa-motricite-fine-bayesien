@@ -218,15 +218,7 @@ Les estimations des coefficients \textit{a posteriori}, conditionnellement au mo
 
 \subsection{Diagnostics MCMC et approximation PSIS-LOO}
 
-Les diagnostics MCMC (figure~\ref{fig:diag_mcmc_ex_PA}) ne révèlent pas de problème de convergence et l'ensemble des paramètres affiche un $\hat{R} < 1.01$ ainsi qu'une taille effective d'échantillon > 400. L'approximation PSIS-LOO est fiable pour l'ensemble des observations. Aucun $\hat{k}$ de Pareto ne dépasse le seuil de $0.7$, ce qui contraste avec les résultats obtenus sur le modèle global et renforce la confiance dans les estimations d'elpd utilisées pour la sélection avec le modèle de référence PA.
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.7]{diag_mcmc_ex_PA.pdf}
-	\caption[Diagnostics MCMC pour le paramètre \texttt{L2\_large}, modèle PA]{Exemple de diagnostics MCMC illustrés pour le paramètre \texttt{L2\_large}, sélectionné à partir du modèle PA. De gauche à droite et de haut en bas~: (1) \textit{traceplot} des chaînes, un bon mélange est souhaité et se traduit par des chaînes entrelacées, similaires à un bruit blanc~; (2) fonction d'autocorrélation, une décroissance rapide vers zéro est souhaitée, ce qui indique une faible dépendance entre échantillons successifs~; (3) histogramme de la distribution \textit{a posteriori}, il doit contenir assez d'informations pour approximer la densité~; (4) courbe de densité estimée \textit{a posteriori}, l'axe \textit{x} de l'histogramme et de la courbe de densité est exprimé en taille d'effet standardisée. % est-ce que je répète vraiment tout ?
-	}
-	\label{fig:diag_mcmc_ex_PA}
-\end{figure}
+Les diagnostics MCMC (voir \hyperref[fig:diag_mcmc_ex_PA]{Annexe E}) ne révèlent pas de problème de convergence et l'ensemble des paramètres affiche un $\hat{R} < 1.01$ ainsi qu'une taille effective d'échantillon > 400. L'approximation PSIS-LOO est fiable pour l'ensemble des observations. Aucun $\hat{k}$ de Pareto ne dépasse le seuil de $0.7$, ce qui contraste avec les résultats obtenus sur le modèle global et renforce la confiance dans les estimations d'elpd utilisées pour la sélection avec le modèle de référence PA. 
 
 
 \subsection{Sensibilité au prior ($p_0$)}

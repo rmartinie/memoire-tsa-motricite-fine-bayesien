@@ -37,7 +37,19 @@ Représente la fréquence de sélection des variables (en ordonnée) en fonction
 \end{figure}
 Représente la fréquence de sélection des variables (en ordonnée) en fonction de la taille du sous-modèle (en abscisse) lors de la sélection par projection prédictive à partir du modèle de référence PA. Chaque case indique le pourcentage de sélection d'une variable donnée entre les \textit{folds} de la validation croisée pour une taille de modèle $k$ jusqu'à $k=15$. 
 \newpage
-\section*{Annexe E. Représentation des deux composantes principales issues de l'ACP réalisée sur les 4 variables sélectionnées pour les sujets TSA }\phantomsection\label{fig:acp}
+
+
+\section*{Annexe E. Diagnostics MCMC pour le paramètre \texttt{L2\_large}, modèle PA }\phantomsection\label{fig:diag_mcmc_ex_PA}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.7]{diag_mcmc_ex_PA.pdf}
+
+\end{figure}
+
+Exemple de diagnostics MCMC illustrés pour le paramètre \texttt{L2\_large}, sélectionné à partir du modèle PA. De gauche à droite et de haut en bas~: (1) \textit{traceplot} des chaînes, un bon mélange est souhaité et se traduit par des chaînes entrelacées, similaires à un bruit blanc~; (2) fonction d'autocorrélation, une décroissance rapide vers zéro est souhaitée, ce qui indique une faible dépendance entre échantillons successifs~; (3) histogramme de la distribution \textit{a posteriori}, il doit contenir assez d'informations pour approximer la densité~; (4) courbe de densité estimée \textit{a posteriori}, l'axe \textit{x} de l'histogramme et de la courbe de densité est exprimé en taille d'effet standardisée. 
+
+\newpage
+\section*{Annexe F. Représentation des deux composantes principales issues de l'ACP réalisée sur les 4 variables sélectionnées pour les sujets TSA }\phantomsection\label{fig:acp}
 
 \begin{figure}[h!]
 	\centering
