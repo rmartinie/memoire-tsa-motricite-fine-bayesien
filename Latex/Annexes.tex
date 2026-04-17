@@ -1,11 +1,92 @@
 \section*{Annexe A. Description de l'ensemble des variables}
 \phantomsection \label{table:annexe_description_var}
 
-\begin{table}[ht]
+\begin{table}[h]
 	\centering
-	\begin{tabular}{lcccc}
+	\begin{tabular}{p{0.30\textwidth}|p{0.6\textwidth}}
+		\multicolumn{2}{l}{\textbf{Pointage Anticipation (PA)}} \\ \hline
+		\texttt{D\_P1\_condition} & Durée mouvement jusqu'à cible 1 (C1) \\
+		\texttt{D\_P2\_condition} & Durée mouvement entre C1 et C2 \\
+		\texttt{D\_Tot\_condition} & Durée totale du mouvement \\
+		\texttt{D\_Int\_condition} & Durée de pause sur C1 \\
+		\texttt{L1\_condition} & Longueur tracé entre départ et C1 \\
+		\texttt{L2\_condition} & Longueur tracé entre C1 et C2 \\
+		\texttt{Tdec1\_condition} & Durée phase décélération en \% \\
+		\texttt{pTdec1\_condition} & Durée phase décélération \\
+		\texttt{PA-Velocity\_condition} & Vitesse \\
+		\texttt{Sparc\_condition} & Indice de fluidité \\
+		\texttt{CurveInd\_condition} & Indice de courbure \\
 	\end{tabular}
 \end{table}
+
+Ensemble des variables issues de la tâche de pointage anticipation. $\texttt{condition} \in \{\texttt{small} , \texttt{large}\}$ en fonction de la condition (cible petite ou grande).
+
+\medskip
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{0.30\textwidth}|p{0.6\textwidth}}
+		\multicolumn{2}{l}{\textbf{Isochronie (Epow)}} \\ \hline
+		\texttt{Dur\_eX} & Durée mouvement \\
+		\texttt{Dur\_eUpX} & Durée jusqu'à fin de la phase montante du tracé (haut du e) \\
+		\texttt{LongueurX} & Longueur du tracé \\
+		\texttt{L\_TX} & Vitesse moyenne \\
+		\texttt{SparcX} & Indice de fluidité \\
+	\end{tabular}
+\end{table}
+
+Ensemble des variables issues de la tâche d'isochronie. $\texttt{X} \in \llbracket 1,5 \rrbracket$ en fonction de la condition (taille du "e").
+
+\medskip
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{0.30\textwidth}|p{0.6\textwidth}}
+		\multicolumn{2}{l}{\textbf{Pointage Simple (PS)}} \\ \hline
+		\texttt{D\_totX} & Durée totale à partir de la présentation de la cible \\
+		\texttt{D\_mvtX} & Durée du mouvement (à partir du moment où le crayon bouge) \\
+		\texttt{T\_reaX} & Temps de réaction (non exploitable) \\
+		\texttt{LongueurX} & Longueur tracé pointage \\
+		\texttt{L\_DmvtX} & Vitesse moyenne \\
+		\texttt{IDtX} & Indice de difficulté \\
+		\texttt{DelaiX} & Délai du logiciel (présentation de la cible non fixe) \\
+		\texttt{IDrX} & Indice de difficulté réel \\
+		\texttt{T2PvX} & Durée jusqu'à l'atteinte du pic d'accélération \\
+		\texttt{T2PaX} & Durée jusqu'à l'atteinte du pic de vitesse \\
+		\texttt{TdecX} & Durée phase décélération \\
+		\texttt{pT2PvX} & Durée jusqu'au pic d'accélération (\%) \\
+		\texttt{pT2PaX} & Durée jusqu'au pic de vitesse (\%) \\
+		\texttt{pTdecX} & Durée phase décélération (\%) \\
+		\texttt{SparcX} & Indice de fluidité \\
+		\texttt{Sparc\_pvX} & Fluidité jusqu'au pic de vitesse \\
+		\texttt{CurveIndX} & Indice de courbure \\
+		\texttt{Nb\_subX} & Nombre de sous-mouvements \\
+	\end{tabular}
+\end{table}
+
+Ensemble des variables issues de la tâche de pointage simple. $\texttt{X} \in \llbracket 3,6 \rrbracket$ en fonction de la condition, soit l'indice de difficulté de la tâche de Fitts défini tel que $\text{ID} = \log_2\!\left(\frac{2A}{w}\right)$.
+
+\newpage 
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{0.30\textwidth}|p{0.6\textwidth}}
+		\multicolumn{2}{l}{\textbf{Écriture anticipation (ll\_ln)}} \\ \hline
+		\texttt{D\_L1\_condition} & Durée du 1er L \\
+		\texttt{D\_L2\_condition} & Durée du 2ème L \\
+		\texttt{D\_Tot\_condition} & Durée totale du mouvement \\
+		\texttt{D\_Int\_condition} & Durée de la pause entre les L \\
+		\texttt{D\_Up\_condition} & Durée jusqu'à fin de la phase montante du tracé (haut du l) \\
+		\texttt{D\_Down\_condition} & Durée de la phase descendante du 1er L tracé \\
+		\texttt{L1\_condition} & Longueur du 1er L \\
+		\texttt{L2\_condition} & Longueur du 2ème L \\
+		\texttt{X\_velocity} & Vitesse \\
+		\texttt{SPARC\_condition} & Indice de fluidité \\
+		\texttt{PTD\_L1-X} & \% durée 1er L en fonction durée totale \\
+	\end{tabular}
+\end{table}
+
+Ensemble des variables issues de la tâche d'anticipation écriture. $\texttt{condition} \in \{\texttt{ll} , \texttt{ln}\}$  en fonction de la condition ("l" ou "n" comme seconde lettre à écrire).
 
 \newpage
 \section*{Annexe B. \textit{Prior} et \textit{Posterior Predictive Checks}}\phantomsection \label{fig:ppc}

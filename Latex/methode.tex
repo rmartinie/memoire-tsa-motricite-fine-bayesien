@@ -211,20 +211,28 @@ Enfin, la validité du modèle a été évaluée par des vérifications prédict
 
 \section{Sélection par projection prédictive}
 \subsection{Principe de cv varsel}
-La sélection par projection prédictive \parencite{Piironen2018Oct} est une méthode de sélection de variables en fonction d'un modèle de référence, ici le modèle logistique bayésien complet ajusté sur l'ensemble des variables. Ce modèle constitue un plafond de performance prédictive : l'objectif est d'identifier le sous-modèle le plus parcimonieux dont la performance prédictive n'est pas inférieure à celle du modèle de référence (voir section~\ref{sec:critere} pour le critère de sélection).
+La sélection par projection prédictive \parencite{Piironen2018Oct} est une méthode de sélection de variables en fonction d'un modèle de référence. Ici, le modèle de référence correspond à une régression logistique bayésienne ajustée sur l'ensemble des variables. Ce modèle constitue un plafond de performance prédictive : l'objectif est d'identifier le sous-modèle le plus parcimonieux dont la performance prédictive n'est pas inférieure à celle du modèle de référence (voir section~\ref{sec:critere} pour le critère de sélection).
 
 \medskip
 
-Le modèle de référence est d'abord ajusté sur l'ensemble des données et sa distribution \textit{a posteriori} est obtenue par MCMC. Une recherche forward est ensuite conduite : les variables sont ajoutées une à une au sous-modèle, en sélectionnant à chaque étape la variable qui minimise la divergence de Kullback-Leibler\footnote{
+Le modèle de référence est d'abord ajusté sur l'ensemble des données et sa distribution \textit{a posteriori} est obtenue par MCMC. Une recherche ascendante (\textit{forward}) est ensuite conduite : les variables sont ajoutées une à une au sous-modèle, en sélectionnant à chaque étape la variable qui minimise la divergence de Kullback-Leibler\footnote{
 	La divergence de Kullback-Leibler, notée $D_{\text{KL}}$, est souvent décrite comme une mesure de la distance entre deux distributions de probabilité. Formellement, avec $P$ et $Q$ des densités de probabilité :
 	\[
 	D_{\text{KL}}(P \| Q) = \int p(x)\,\log\frac{p(x)}{q(x)}\,\mathrm{d}x	\]
-}  entre les prédictions du sous-modèle projeté et celles du modèle de référence. La projection consiste à trouver, pour chaque taille de sous-modèle, les paramètres qui reproduisent au mieux le comportement prédictif du modèle de référence. Une fois le sous-modèle sélectionné, une inférence finale est conduite sur ce sous-modèle restreint.
+}  entre le sous-modèle projeté et le modèle de référence. La projection consiste à trouver, pour chaque taille de sous-modèle, les paramètres qui reproduisent au mieux le comportement prédictif du modèle de référence. Une fois le sous-modèle sélectionné, une inférence finale est conduite sur ce sous-modèle restreint.
 
-\medskip 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=1, trim=5 5 5 5pt, clip]{projpred.pdf}
+	\caption[Schéma explicatif de la sélection par projection prédictive]{Schéma explicatif de la sélection par projection prédictive. Les variables représentées, ainsi que leur ordre de sélection, sont à titre illustratif. A chaque taille de modèle réduit $k$, le prédicteur sélectionné est celui qui minimise la divergence de Kullback-Leibler entre le modèle réduit et le modèle complet de référence. Cette sélection est confirmée par LOO-CV. La capacité prédictive de chaque modèle réduit est mesurée après chaque sélection de variable par les critères d'elpd et d'\textit{accuracy}.}
+	\label{fig:projpred}
+\end{figure}
+
 
 La performance prédictive de chaque sous-modèle est évaluée par \texttt{cv\_varsel} avec \texttt{validate\_search = TRUE} \parencite{projpred}. Une LOO-CV est réalisée dans laquelle, à chaque fold, la recherche forward est réappliquée sur les $n-1$ observations d'entraînement. La performance à chaque étape (chaque \textit{fold} de LOO-CV pour chaque taille de sous-modèle $k$ testée) est définie par l'elpd approximé par PSIS-LOO. La performance finale du sous-modèle sélectionné est évaluée sur l'observation exclue. % Cela permet de corriger le biais de sélection lié à la recherche forward.
-La fréquence à laquelle une variable est incluse dans le sous-modèle de taille $k$ à travers les folds permet de constituer une mesure de stabilité de la sélection.
+La fréquence à laquelle une variable est incluse dans le sous-modèle de taille $k$ à travers les folds permet de constituer une mesure de stabilité de la sélection.  Un schéma explicatif qui résume la procédure de sélection est disponible en figure~\ref{fig:projpred}.
+
 
 \subsection{Critère de sélection}\label{sec:critere}
 
